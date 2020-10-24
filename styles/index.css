@@ -27,7 +27,7 @@ body {
 @font-face {
   font-family: IBM Plex Mono;
   font-weight: 400;
-  src: url(fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf) format("truetype");
+  src: url(fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf) format("opentype");
 }
 
 /* Start purging... */
