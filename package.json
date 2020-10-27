@@ -9,16 +9,26 @@
 	"dependencies": {
 		"@tailwindcss/typography": "^0.2.0",
 		"eslint": "^7.7.0",
-		"next": "latest",
+		"imagemin-mozjpeg": "^9.0.0",
+		"imagemin-optipng": "^8.0.0",
+		"imagemin-svgo": "^8.0.0",
+		"lodash": "^4.17.20",
+		"moment": "^2.29.1",
+		"next": "^10.0.0",
+		"next-compose-plugins": "^2.2.0",
 		"next-mdx-enhanced": "^3.1.0",
+		"next-mdx-remote": "^1.0.0",
+		"next-optimized-images": "^2.6.2",
 		"next-seo": "^4.7.3",
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1"
+		"nextjs": "^0.0.3",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"shikwasa": "^2.0.1"
 	},
 	"devDependencies": {
 		"postcss-flexbugs-fixes": "4.2.1",
 		"postcss-preset-env": "^6.7.0",
-		"tailwindcss": "^1.6.0"
+		"tailwindcss": "^1.9"
 	},
 	"license": "MIT"
 }
