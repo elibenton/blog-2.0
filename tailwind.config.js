@@ -16,9 +16,9 @@ module.exports = {
 		}
 	},
 	variants: {
-		textDecoration: ['hover', 'group-hover'],
+		textDecoration: ['hover', 'group-hover', 'active'],
 		fontStyle: ['hover', 'group-hover'],
-		textColor: ['hover', 'group-hover']
+		textColor: ['hover', 'group-hover', 'active']
 	},
 	plugins: [require('@tailwindcss/typography')]
 }

@@ -1,6 +1,14 @@
+import Image from 'next/image'
+
 export default function ImageFill({ imagePath, title, caption, date, location }) {
 	return (
 		<>
+			<Image
+				src='/cdale.jpeg'
+				alt='Picture of the author'
+				width={2000}
+				height={1500}
+				priority={true}></Image>
 			<div
 				className='bg-cover bg-bottom'
 				style={{

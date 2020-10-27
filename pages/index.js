@@ -18,16 +18,19 @@ export default function Portfolio() {
 							title={`Don't Wait, Vote!`}
 							dates='May 2020 - November 2020'
 							locations='Birmingham, Alabama'
+							mediums='Audio'
 						/>
 						<Entry
 							title='The Watson Fellowship'
 							dates='July 2019 - March 2020'
 							locations='Yangon, Myanmar'
+							mediums='Data'
 						/>
 						<Entry
 							title='Discussion Collective'
 							dates='January 2018 - May 2019'
 							locations='Los Angeles, California'
+							mediums='Photography'
 						/>
 						<Entry
 							title='The Political Arguments of Podcasting'
