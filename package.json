@@ -24,8 +24,10 @@
 		"next-seo": "^4.7.3",
 		"nextjs": "^0.0.3",
 		"react": "^17.0.1",
+		"react-click-outside": "^3.0.1",
 		"react-dom": "^17.0.1",
-		"shikwasa": "^2.0.1"
+		"shikwasa": "^2.0.1",
+		"styled-components": "^5.2.1"
 	},
 	"devDependencies": {
 		"postcss-flexbugs-fixes": "4.2.1",

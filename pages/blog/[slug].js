@@ -10,6 +10,8 @@ import CustomLink from '../../components/mdx/CustomLink'
 import Layout from '../../components/mdx/Layout'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 
+import Wrapper from '../../components/wrapper'
+
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
@@ -20,13 +22,14 @@ const components = {
 	// useful for conditionally loading components for certain routes.
 	// See the notes in README.md for more details.
 	TestComponent: dynamic(() => import('../../components/mdx/TestComponent')),
-	Head
+	Head,
+	Citation: dynamic(() => import('../../components/citation/citation'))
 }
 
 export default function PostPage({ source, frontMatter }) {
 	const content = hydrate(source, { components })
 	return (
-		<Layout>
+		<Wrapper>
 			<header>
 				<nav>
 					<Link href="/">
@@ -53,7 +56,7 @@ export default function PostPage({ source, frontMatter }) {
 					opacity: 0.6;
 				}
 			`}</style>
-		</Layout>
+		</Wrapper>
 	)
 }
 

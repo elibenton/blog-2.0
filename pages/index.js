@@ -7,7 +7,14 @@ import Footer from '../components/footer'
 import ImageFill from '../components/image-fill'
 import BlogList from '../components/blog-list'
 
-export default function Portfolio() {
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import Link from 'next/link'
+
+const root = process.cwd()
+
+export default function Portfolio({ postData }) {
 	return (
 		<Wrapper>
 			<Intro />
@@ -38,11 +45,33 @@ export default function Portfolio() {
 							locations="Los Angeles, California"
 						/>
 					</Section>
-					<BlogList />
+					<Section sectionName="Blog">
+						{postData.map(data => (
+							<Entry
+								title={data.frontMatter.title}
+								link={data.slug}
+								dates="August 2018 - May 2019"
+								locations="Los Angeles, California"
+							/>
+						))}
+					</Section>
 				</div>
 				<TableOfContents />
 			</div>
 			<Footer />
 		</Wrapper>
 	)
+}
+
+export async function getStaticProps() {
+	const contentRoot = path.join(root, 'posts')
+	const postData = fs.readdirSync(contentRoot).map(p => {
+		const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
+		return {
+			slug: p.replace(/\.mdx/, ''),
+			content,
+			frontMatter: matter(content).data
+		}
+	})
+	return { props: { postData } }
 }
