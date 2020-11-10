@@ -23,7 +23,8 @@ const components = {
 	// See the notes in README.md for more details.
 	TestComponent: dynamic(() => import('../../components/mdx/TestComponent')),
 	Head,
-	Citation: dynamic(() => import('../../components/citation/citation'))
+	Citation: dynamic(() => import('../../components/citation/citation')),
+	Subscribe: dynamic(() => import('../../components/subscribe'))
 }
 
 export default function PostPage({ source, frontMatter }) {
@@ -32,30 +33,18 @@ export default function PostPage({ source, frontMatter }) {
 		<Wrapper>
 			<header>
 				<nav>
-					<Link href="/">
+					<Link href='/'>
 						<a>👈 Go back home</a>
 					</Link>
 				</nav>
 			</header>
-			<div className="post-header">
+			<div className='post-header'>
 				<h1>{frontMatter.title}</h1>
 				{frontMatter.description && (
-					<p className="description">{frontMatter.description}</p>
+					<p className='description'>{frontMatter.description}</p>
 				)}
 			</div>
 			<main>{content}</main>
-
-			<style jsx>{`
-				.post-header h1 {
-					margin-bottom: 0;
-				}
-				.post-header {
-					margin-bottom: 2rem;
-				}
-				.description {
-					opacity: 0.6;
-				}
-			`}</style>
 		</Wrapper>
 	)
 }
