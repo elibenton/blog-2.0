@@ -11,6 +11,8 @@ import Layout from '../../components/mdx/Layout'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 
 import Wrapper from '../../components/wrapper'
+import Footer from '../../components/footer'
+import Header from '../../components/header'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -23,6 +25,7 @@ const components = {
 	// See the notes in README.md for more details.
 	TestComponent: dynamic(() => import('../../components/mdx/TestComponent')),
 	Head,
+	Image: dynamic(() => import('../../components/image')),
 	Citation: dynamic(() => import('../../components/citation/citation')),
 	Subscribe: dynamic(() => import('../../components/subscribe'))
 }
@@ -31,20 +34,23 @@ export default function PostPage({ source, frontMatter }) {
 	const content = hydrate(source, { components })
 	return (
 		<Wrapper>
-			<header>
+			{/* <header>
 				<nav>
 					<Link href='/'>
 						<a>👈 Go back home</a>
 					</Link>
 				</nav>
-			</header>
-			<div className='post-header'>
-				<h1>{frontMatter.title}</h1>
-				{frontMatter.description && (
-					<p className='description'>{frontMatter.description}</p>
-				)}
+			</header> */}
+			{/* <Header /> */}
+
+			<h1 className='text-3xl'>{frontMatter.title}</h1>
+			{frontMatter.description && (
+				<p className='description'>{frontMatter.description}</p>
+			)}
+			<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-12'>
+				<main>{content}</main>
 			</div>
-			<main>{content}</main>
+			<Footer />
 		</Wrapper>
 	)
 }

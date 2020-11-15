@@ -1,14 +1,13 @@
 import React, { useState, useRef } from 'react'
 
 const Subscribe = () => {
-	const [loading, setLoading] = useState(false)
+	// const [loading, setLoading] = useState(false)
 	const inputEl = useRef(null)
 
-	console.log('hello')
-
 	const subscribe = async e => {
+		console.log
 		e.preventDefault()
-		setLoading(true)
+		// setLoading(true)
 
 		const res = await fetch('/api/subscribe', {
 			body: JSON.stringify({
@@ -20,86 +19,54 @@ const Subscribe = () => {
 			method: 'POST'
 		})
 
-		setLoading(false)
+		// setLoading(false)
 		const { error } = await res.json()
 
-		//  if (error) {
-		//    toast({
-		//      title: 'An error occurred.',
-		//      description: error,
-		//      status: 'error',
-		//      duration: 3000,
-		//      isClosable: true
-		//    });
+		if (error) {
+			console.log(error)
+			alert('ERROR', error)
+			return
+		}
 
-		//    return;
-		//  }
-
-		//  trackGoal('JYFUFMSF', 0);
-		//  inputEl.current.value = '';
-		//  toast({
-		//    title: 'Success!',
-		//    description: 'You are now subscribed.',
-		//    status: 'success',
-		//    duration: 3000,
-		//    isClosable: true
-		//  });
+		inputEl.current.value = ''
 	}
 
 	return (
-		<>
-			<div className='bg-white rounded-lg p-6 self-start w-1/2 my-4 mx-1'>
-				<h1 className='font-bold text-3xl'>Subscribe to the newsletter</h1>
-				<p className='mb-4'>
-					Get emails from me about web development, tech, and early access
-					to new articles.
-				</p>
-				<input
-					className='border-gray-300 rounded-lg py-2 mr-6 w-2/3'
-					placeholder='name@domain.com'
-					ref={inputEl}
-					type='email'></input>
-				<button className='bg-gray-500 rounded-lg py-2 px-4 w-1/4'>
-					Subscribe
-				</button>
+		<div className='container flex flex-col justify-center items-center mx-auto my-8 py-10'>
+			<div
+				// style='background-image: url(https://images.unsplash.com/photo-1538582709238-0a503bd5ae04?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)'
+				className='max-w-5xl bg-gray-300 h-64 w-full rounded-lg shadow-md bg-cover bg-center'></div>
+
+			<div className='bg-white -mt-24 shadow-md rounded-lg overflow-hidden'>
+				<div className='items-center justify-between py-10 px-5 bg-white shadow-2xl rounded-lg mx-auto text-center'>
+					<div className='px-2 -mt-6'>
+						<div className='text-center'>
+							<h1 className='text-3xl text-grey-800 font-medium leading-loose my-3 w-full'>
+								Get the Latest Information
+							</h1>
+							<div className='w-full text-center'>
+								<form action='#'>
+									<div className='max-w-sm mx-auto p-1 pr-0 flex items-center'>
+										<input
+											type='email'
+											ref={inputEl}
+											placeholder='yourmail@example.com'
+											className='flex-1 appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none'
+										/>
+										<button
+											type='submit'
+											onClick={subscribe}
+											className='bg-blue-600 text-white text-base font-semibold rounded-md shadow-md hover:bg-indigo-600 p-3'>
+											Get started
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			{/* <Box
-      border="1px solid"
-      borderColor={borderColor[colorMode]}
-      bg={bgColor[colorMode]}
-      borderRadius={4}
-      padding={6}
-      my={4}
-      w="100%"
-    >
-      <Heading as="h5" size="lg" mb={2}>
-        Subscribe to the newsletter
-      </Heading>
-      <Text>
-        Get emails from me about web development, tech, and early access to new
-        articles.
-      </Text>
-      <InputGroup size="md" mt={4}>
-        <Input
-          aria-label="Email for newsletter"
-          placeholder="tim@apple.com"
-          ref={inputEl}
-          type="email"
-        />
-        <InputRightElement width="6.75rem">
-          <Button
-            isLoading={loading}
-            fontWeight="bold"
-            h="1.75rem"
-            size="sm"
-            onClick={subscribe}
-          >
-            Subscribe
-          </Button>
-        </InputRightElement>
-      </InputGroup>
-    </Box> */}
-		</>
+		</div>
 	)
 }
 
