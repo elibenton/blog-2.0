@@ -34,20 +34,30 @@ export default function PostPage({ source, frontMatter }) {
 	const content = hydrate(source, { components })
 	return (
 		<Wrapper>
-			{/* <header>
-				<nav>
-					<Link href='/'>
-						<a>👈 Go back home</a>
-					</Link>
-				</nav>
-			</header> */}
-			{/* <Header /> */}
-
-			<h1 className='text-3xl'>{frontMatter.title}</h1>
-			{frontMatter.description && (
-				<p className='description'>{frontMatter.description}</p>
-			)}
-			<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-12'>
+			<div className='flex flex-col sm:flex-row justify-between md:mt-12 space-y-4'>
+				<div className='lg:ml-8'>
+					<h1 className='font-akzidenz text-4xl md:text-6xl '>
+						{frontMatter.title}
+					</h1>
+					{frontMatter.description && (
+						<p className='description'>{frontMatter.description}</p>
+					)}
+				</div>
+				<div className='self-start sm:self-center lg:mr-16'>
+					<ul className='border-l-2 border-black'>
+						{frontMatter.date && (
+							<li className='pl-4'>{frontMatter.date}</li>
+						)}
+						{frontMatter.location && (
+							<li className='pl-4'>{frontMatter.location}</li>
+						)}
+						{frontMatter.medium && (
+							<li className='pl-4'>{frontMatter.medium}</li>
+						)}
+					</ul>
+				</div>
+			</div>
+			<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-16'>
 				<main>{content}</main>
 			</div>
 			<Footer />

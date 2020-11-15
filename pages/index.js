@@ -4,7 +4,6 @@ import Wrapper from '../components/wrapper'
 import Intro from '../components/intro'
 import TableOfContents from '../components/toc'
 import Footer from '../components/footer'
-import ImageFill from '../components/image-fill'
 import BlogList from '../components/blog-list'
 
 import fs from 'fs'
@@ -18,40 +17,40 @@ export default function Portfolio({ postData }) {
 	return (
 		<Wrapper>
 			<Intro />
-			<div className="flex flex-row">
-				<div className="flex-grow">
-					<Section sectionName="Projects">
+			<div className='flex flex-row'>
+				<div className='flex-grow'>
+					<Section sectionName='Projects'>
 						<Entry
 							title={`Don't Wait, Vote!`}
-							dates="May 2020 - November 2020"
-							locations="Birmingham, Alabama"
-							mediums="Audio"
+							dates='May 2020 - November 2020'
+							locations='Birmingham, Alabama'
+							mediums='Audio'
 						/>
 						<Entry
-							title="The Watson Fellowship"
-							dates="July 2019 - March 2020"
-							locations="Yangon, Myanmar"
-							mediums="Data"
+							title='The Watson Fellowship'
+							dates='July 2019 - March 2020'
+							locations='Yangon, Myanmar'
+							mediums='Data'
 						/>
 						<Entry
-							title="Discussion Collective"
-							dates="January 2018 - May 2019"
-							locations="Los Angeles, California"
-							mediums="Photography"
+							title='Discussion Collective'
+							dates='January 2018 - May 2019'
+							locations='Los Angeles, California'
+							mediums='Photography'
 						/>
 						<Entry
-							title="The Political Arguments of Podcasting"
-							dates="August 2018 - May 2019"
-							locations="Los Angeles, California"
+							title='The Political Arguments of Podcasting'
+							dates='August 2018 - May 2019'
+							locations='Los Angeles, California'
 						/>
 					</Section>
-					<Section sectionName="Blog">
+					<Section sectionName='Blog'>
 						{postData.map(data => (
 							<Entry
 								title={data.frontMatter.title}
 								link={data.slug}
-								dates="August 2018 - May 2019"
-								locations="Los Angeles, California"
+								dates='August 2018 - May 2019'
+								locations='Los Angeles, California'
 							/>
 						))}
 					</Section>
