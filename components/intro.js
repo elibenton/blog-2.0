@@ -1,16 +1,15 @@
 export default function Intro({ children }) {
 	return (
 		<section className='flex flex-row max-w-4xl md:max-w-6xl mx-auto pt-2 sm:pt-12 min-h-screen'>
-			<div className>
+			<div className className='max-w-5xl'>
 				<h1 className='text-6xl leading-tight text-left font-bold my-5'>
 					Hello,
 					<br className='flex sm:hidden' /> I'm Eli
 					<span className='hidden sm:inline'> Cohen</span>.
 				</h1>
-				<h2 className='text-xl sm:text-3xl md:text-4xl lg:text-4xl text-left leading-tight'>
-					I'm a freelance journalist working in multiple mediums
-					<br className='hidden sm:flex' /> — primarily{' '}
-					<span className='text-red-500 expand pb-0'>data</span>,{' '}
+				<h2 className='text-2xl sm:text-3xl md:text-4xl text-left leading-tight'>
+					I'm a freelance journalist working in multiple mediums —
+					primarily <span className='text-red-500 expand pb-0'>data</span>,{' '}
 					<span className='text-blue-500'>audio</span>, and{' '}
 					<span className='text-yellow-500'>photography</span>. I currently
 					live in Birmingham, Alabama.

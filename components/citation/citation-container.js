@@ -29,7 +29,7 @@ const popupDimensions = {
 
 const PopupPosition = styled.span`
 	position: absolute;
-	left: 20px;
+	right: 265px;
 	z-index: 3;
 	transform: translateY(-${popupDimensions.height - 100}px);
 	@media screen and (max-width: 767px) {
