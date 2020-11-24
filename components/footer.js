@@ -5,12 +5,7 @@ export default function Footer() {
 				<ul>
 					<li>
 						<a className='expand' href='#yeah'>
-							About Me
-						</a>
-					</li>
-					<li>
-						<a className='expand' href='#yeah'>
-							Newsletter
+							Subscribe
 						</a>
 					</li>
 					<li>
@@ -21,11 +16,6 @@ export default function Footer() {
 					<li>
 						<a className='expand' href='#yeah'>
 							Sitemap
-						</a>
-					</li>
-					<li>
-						<a className='expand' href='#yeah'>
-							Terms & Privacy
 						</a>
 					</li>
 				</ul>
@@ -39,7 +29,7 @@ export default function Footer() {
 				<a
 					href='#yep'
 					className='text-sm bg-gray-300 rounded-full text-gray-700 px-2 hover:bg-gray-400 hover:text-gray-900 duration-200'>
-					Updated 10-25-2020
+					Terms & Privacy
 				</a>
 				<a
 					href='#yep'

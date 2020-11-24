@@ -9,6 +9,7 @@ import moment from 'moment'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import Header from '../components/header'
 
 const root = process.cwd()
 
@@ -48,17 +49,16 @@ export default function Portfolio({ groupedList }) {
 							{entry
 								.slice(1, 2)
 								.map(article =>
-									article.map(({ slug, frontMatter }) => (
-										<Entry
-											title={frontMatter.title}
-											link={slug}
-											dates={moment(
-												frontMatter.date,
-												'MM-DD-YYYY'
-											).format('DD MMMM YYYY')}
-											locations={frontMatter.location}
-										/>
-									))
+									article.map(
+										({ slug, title, location, dateSerialized }) => (
+											<Entry
+												title={title}
+												link={slug}
+												dates={dateSerialized}
+												locations={location}
+											/>
+										)
+									)
 								)}
 						</Section>
 					))}
@@ -83,8 +83,12 @@ export async function getStaticProps() {
 	const groupedList = _.groupBy(
 		_.sortBy(
 			postData.map(item => ({
-				...item,
-				month: moment(item.frontMatter.date, 'MM-DD-YYYY').format(
+				title: item.frontMatter.title,
+				location: item.frontMatter.location,
+				dateSerialized: moment(item.frontMatter.date, 'YYYY-MM-DD').format(
+					'YYYY-MM-DD'
+				),
+				month: moment(item.frontMatter.date, 'YYYY-MM-DD').format(
 					'MMMM YYYY'
 				),
 				dateForSorting: Date.parse(item.frontMatter.date)

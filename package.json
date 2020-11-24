@@ -8,6 +8,8 @@
 		"start": "next start"
 	},
 	"dependencies": {
+		"@elibenton/how-independent-is-the": "https://api.observablehq.com/@elibenton/how-independent-is-the.tgz?v=3",
+		"@observablehq/runtime": "4",
 		"@silvenon/remark-smartypants": "^1.0.0",
 		"@tailwindcss/typography": "^0.2.0",
 		"gray-matter": "^4.0.2",
@@ -28,6 +30,7 @@
 		"styled-components": "^5.2.1"
 	},
 	"devDependencies": {
+		"@babel/plugin-syntax-import-meta": "^7.10.4",
 		"eslint": "^7.13.0",
 		"eslint-config-airbnb": "^18.2.1",
 		"eslint-config-prettier": "^6.15.0",
