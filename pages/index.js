@@ -83,6 +83,7 @@ export async function getStaticProps() {
 	const groupedList = _.groupBy(
 		_.sortBy(
 			postData.map(item => ({
+				slug: item.slug,
 				title: item.frontMatter.title,
 				location: item.frontMatter.location,
 				dateSerialized: moment(item.frontMatter.date, 'YYYY-MM-DD').format(

@@ -50,17 +50,21 @@ export default function PostPage({ source, frontMatter, params }) {
 				</Head>
 				<div className='flex flex-col sm:flex-row justify-between md:mt-12 space-y-4'>
 					<div className='lg:ml-8'>
-						<h1 className='font-akzidenz text-4xl md:text-6xl '>
+						<h1 className='font-akzidenz text-4xl md:text-6xl max-w-3xl leading-none '>
 							{frontMatter.title}
 						</h1>
 						{frontMatter.description && (
-							<p className='description'>{frontMatter.description}</p>
+							<p className='description max-w-3xl'>
+								{frontMatter.description}
+							</p>
 						)}
 					</div>
 					<div className='self-start sm:self-center lg:mr-16'>
 						<ul className='border-l-2 border-black'>
 							{frontMatter.date && (
-								<li className='pl-4'>{frontMatter.date}</li>
+								<li className='pl-4'>
+									{JSON.stringify(frontMatter.date)}
+								</li>
 							)}
 							{frontMatter.location && (
 								<li className='pl-4'>{frontMatter.location}</li>
