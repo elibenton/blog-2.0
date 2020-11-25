@@ -7,6 +7,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import path from 'path'
 import CustomLink from '../../components/custom-link'
+
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 
 import Wrapper from '../../components/wrapper'
