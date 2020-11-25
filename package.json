@@ -8,7 +8,6 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@elibenton/how-independent-is-the": "https://api.observablehq.com/@elibenton/how-independent-is-the.tgz?v=3",
 		"@observablehq/runtime": "4",
 		"@silvenon/remark-smartypants": "^1.0.0",
 		"@tailwindcss/typography": "^0.2.0",
