@@ -1,4 +1,5 @@
 module.exports = {
+	darkMode: 'class',
 	purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		fontFamily: {
@@ -12,11 +13,12 @@ module.exports = {
 			}
 		},
 		fontSize: {
+			'sm': '.8rem',
 			'1xl': '1rem',
 			'2xl': '1.5rem',
 			'3xl': '2rem',
 			'4xl': '2.5rem',
-			'5xl': '4.5rem',
+			'5xl': '3.5rem',
 			'6xl': '5rem',
 			'7xl': '8rem'
 		}

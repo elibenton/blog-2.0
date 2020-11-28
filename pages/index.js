@@ -10,6 +10,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import Header from '../components/header'
+import Projects from '../components/project-entry'
+import BlogList from '../components/blog-list'
 
 const root = process.cwd()
 
@@ -17,54 +19,7 @@ export default function Portfolio({ groupedList }) {
 	return (
 		<Wrapper>
 			<Intro />
-			<div className='flex flex-row'>
-				<div className='flex-grow'>
-					{/* <Section sectionName='Projects'>
-						<Entry
-							title={`Don't Wait, Vote!`}
-							dates='May 2020 - November 2020'
-							locations='Birmingham, Alabama'
-							mediums='Audio'
-						/>
-						<Entry
-							title='The Watson Fellowship'
-							dates='July 2019 - March 2020'
-							locations='Yangon, Myanmar'
-							mediums='Data'
-						/>
-						<Entry
-							title='Discussion Collective'
-							dates='January 2018 - May 2019'
-							locations='Los Angeles, California'
-							mediums='Photography'
-						/>
-						<Entry
-							title='The Political Arguments of Podcasting'
-							dates='August 2018 - May 2019'
-							locations='Los Angeles, California'
-						/>
-					</Section> */}
-					{Object.entries(groupedList).map(entry => (
-						<Section sectionName={entry.slice(0, 1)}>
-							{entry
-								.slice(1, 2)
-								.map(article =>
-									article.map(
-										({ slug, title, location, dateSerialized }) => (
-											<Entry
-												title={title}
-												link={slug}
-												dates={dateSerialized}
-												locations={location}
-											/>
-										)
-									)
-								)}
-						</Section>
-					))}
-				</div>
-				<TableOfContents />
-			</div>
+			<BlogList groupedList={groupedList} />
 			<Footer />
 		</Wrapper>
 	)

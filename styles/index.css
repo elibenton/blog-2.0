@@ -1,9 +1,9 @@
 @tailwind base;
 
 /* Write your own custom base styles here */
-body {
+/* body {
 	@apply bg-gray-100;
-}
+} */
 
 .yellow-underline {
 	text-decoration-color: gold;
