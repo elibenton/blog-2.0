@@ -2,7 +2,7 @@ import React from 'react'
 // import PropTypes from 'prop-types'
 import enhanceWithClickOutside from 'react-click-outside'
 
-import Color from '../../utils/colors'
+import Color from '../utils/colors'
 import CitationButton from './citation-button'
 import CitationContainer from './citation-container'
 

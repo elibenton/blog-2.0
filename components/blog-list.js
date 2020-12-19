@@ -24,8 +24,8 @@ export default function BlogList({ groupedList }) {
 					</Section>
 				))}
 			</div>
-			<aside className='hidden lg:flex flex-col flex-wrap max-w-sm sticky-top self-start'>
-				<ul className='mt-6 mr-12'>
+			<aside>
+				<ul className='hidden lg:flex flex-col flex-wrap w-64 sticky-top self-start mt-6'>
 					{Object.entries(groupedList).map(entry => (
 						<li>
 							<a

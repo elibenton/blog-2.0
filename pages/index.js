@@ -1,17 +1,13 @@
-import Entry from '../components/entry'
-import Section from '../components/section'
 import Wrapper from '../components/wrapper'
 import Intro from '../components/intro'
-import TableOfContents from '../components/toc'
 import Footer from '../components/footer'
+import BlogList from '../components/blog-list'
+
 import _ from 'lodash'
 import moment from 'moment'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import Header from '../components/header'
-import Projects from '../components/project-entry'
-import BlogList from '../components/blog-list'
 
 const root = process.cwd()
 

@@ -1225,10 +1225,6 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@elibenton/how-independent-is-the@https://api.observablehq.com/@elibenton/how-independent-is-the.tgz?v=3":
-  version "1435.0.0"
-  resolved "https://api.observablehq.com/@elibenton/how-independent-is-the.tgz?v=3#2a2fe7c338e532a7ad3761d1e606bff4e2b2db8c"
-
 "@emotion/is-prop-valid@^0.8.8":
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
