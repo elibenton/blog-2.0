@@ -1,4 +1,3 @@
-import Wrapper from '../components/wrapper'
 import Intro from '../components/intro'
 import Footer from '../components/footer'
 import BlogList from '../components/blog-list'
@@ -14,13 +13,11 @@ const root = process.cwd()
 
 export default function Portfolio({ groupedList }) {
 	return (
-		// <Wrapper>
 		<>
 			<Intro />
 			<BlogList groupedList={groupedList} />
 			<Footer />
 		</>
-		// </Wrapper>
 	)
 }
 

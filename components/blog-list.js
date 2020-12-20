@@ -2,7 +2,6 @@ import Section from '../components/section'
 import Entry from '../components/entry'
 
 export default function BlogList({ groupedList }) {
-	console.log(groupedList.tier_1)
 	return (
 		<div className='flex flex-row'>
 			<div className='flex-grow'>
