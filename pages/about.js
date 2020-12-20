@@ -8,9 +8,9 @@ export default function About() {
 					I'm a freelance journalist working in multiple mediums —
 					primarily <span className='text-red-500 expand pb-0'>data</span>,{' '}
 					<span className='text-blue-500'>audio</span>, and{' '}
-					<span className='text-yellow-500'>photography</span>. I've long
-					been interested in the politics of technology, late-stage
-					capitalism, and the American South. <br />
+					<span className='text-yellow-500'>photography</span>. I'm
+					interested in the politics of technology, late-stage capitalism,
+					and the American South. <br />
 					<br /> I currently live in Birmingham, Alabama.
 				</h2>
 				<Projects />

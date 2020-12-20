@@ -11,6 +11,7 @@
 		"@observablehq/runtime": "4",
 		"@silvenon/remark-smartypants": "^1.0.0",
 		"@tailwindcss/typography": "^0.2.0",
+		"d3": "^6.3.1",
 		"gray-matter": "^4.0.2",
 		"lodash": "^4.17.20",
 		"moment": "^2.29.1",
