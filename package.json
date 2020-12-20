@@ -19,6 +19,7 @@
 		"next-mdx-remote": "^1.0.0",
 		"next-remote-watch": "^0.2.0",
 		"next-seo": "^4.7.3",
+		"next-themes": "^0.0.10",
 		"react": "^17.0.1",
 		"react-click-outside": "^3.0.1",
 		"react-dom": "^17.0.1",
@@ -31,6 +32,7 @@
 	},
 	"devDependencies": {
 		"@babel/plugin-syntax-import-meta": "^7.10.4",
+		"autoprefixer": "^10.1.0",
 		"eslint": "^7.13.0",
 		"eslint-config-airbnb": "^18.2.1",
 		"eslint-config-prettier": "^6.15.0",
@@ -38,9 +40,10 @@
 		"eslint-plugin-jsx-a11y": "^6.4.1",
 		"eslint-plugin-react": "^7.21.5",
 		"eslint-plugin-react-hooks": "^4.2.0",
+		"postcss": "^8.2.1",
 		"postcss-flexbugs-fixes": "4.2.1",
 		"postcss-preset-env": "^6.7.0",
-		"tailwindcss": "^1.9"
+		"tailwindcss": "^2.0.2"
 	},
 	"license": "MIT"
 }

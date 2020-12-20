@@ -8,6 +8,8 @@ import Link from 'next/link'
 import path from 'path'
 import CustomLink from '../../components/custom-link'
 
+import Nav from '../../components/nav'
+
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 
 import Wrapper from '../../components/wrapper'
@@ -37,50 +39,51 @@ export default function PostPage({ source, frontMatter, params }) {
 	const content = hydrate(source, { components })
 	return (
 		<>
-			<Wrapper>
-				<Head>
-					<title>{frontMatter.title} | Blog</title>
-					<meta property='og:title' content={frontMatter.title} />
-					<meta property='og:type' content='article' />
-					{/* <meta property='og:url' content={params.slug} /> */}
+			{/* <Wrapper> */}
+			<Head>
+				<title>{frontMatter.title} | Blog</title>
+				<meta property='og:title' content={frontMatter.title} />
+				<meta property='og:type' content='article' />
+				{/* <meta property='og:url' content={params.slug} /> */}
 
-					{/* <meta
+				{/* <meta
 						property='og:image'
 						content='https://ia.media-imdb.com/images/rock.jpg'
 					/> */}
-				</Head>
-				<div className='flex flex-col sm:flex-row justify-between md:mt-12 space-y-4'>
-					<div className='lg:ml-8'>
-						<h1 className='font-akzidenz text-4xl md:text-6xl max-w-3xl leading-none '>
-							{frontMatter.title}
-						</h1>
-						{frontMatter.description && (
-							<p className='description max-w-3xl'>
-								{frontMatter.description}
-							</p>
+			</Head>
+			<Nav />
+			<div className='flex flex-col sm:flex-row justify-between md:mt-12 space-y-4'>
+				<div className='lg:ml-8'>
+					<h1 className='font-akzidenz text-4xl md:text-6xl max-w-3xl leading-none '>
+						{frontMatter.title}
+					</h1>
+					{frontMatter.description && (
+						<p className='description max-w-3xl'>
+							{frontMatter.description}
+						</p>
+					)}
+				</div>
+				<div className='self-start sm:self-center lg:mr-16'>
+					<ul className='border-l-2 border-black'>
+						{frontMatter.date && (
+							<li className='pl-4'>
+								{JSON.stringify(frontMatter.date)}
+							</li>
 						)}
-					</div>
-					<div className='self-start sm:self-center lg:mr-16'>
-						<ul className='border-l-2 border-black'>
-							{frontMatter.date && (
-								<li className='pl-4'>
-									{JSON.stringify(frontMatter.date)}
-								</li>
-							)}
-							{frontMatter.location && (
-								<li className='pl-4'>{frontMatter.location}</li>
-							)}
-							{frontMatter.medium && (
-								<li className='pl-4'>{frontMatter.medium}</li>
-							)}
-						</ul>
-					</div>
+						{frontMatter.location && (
+							<li className='pl-4'>{frontMatter.location}</li>
+						)}
+						{frontMatter.medium && (
+							<li className='pl-4'>{frontMatter.medium}</li>
+						)}
+					</ul>
 				</div>
-				<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-16'>
-					<main>{content}</main>
-				</div>
-				<Footer />
-			</Wrapper>
+			</div>
+			<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-16'>
+				<main>{content}</main>
+			</div>
+			<Footer />
+			{/* </Wrapper> */}
 		</>
 	)
 }

@@ -14,11 +14,13 @@ const root = process.cwd()
 
 export default function Portfolio({ groupedList }) {
 	return (
-		<Wrapper>
+		// <Wrapper>
+		<>
 			<Intro />
 			<BlogList groupedList={groupedList} />
 			<Footer />
-		</Wrapper>
+		</>
+		// </Wrapper>
 	)
 }
 
@@ -57,7 +59,7 @@ function group(post) {
 		}
 	} else if (
 		postDate.isBetween(
-			moment().subtract(2, 'year'),
+			moment().subtract(3, 'year'),
 			moment().subtract(1, 'year')
 		)
 	) {
