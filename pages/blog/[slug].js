@@ -29,7 +29,7 @@ const components = {
 	// See the notes in README.md for more details.
 	TestComponent: dynamic(() => import('../../components/test-component')),
 	Image: dynamic(() => import('../../components/image')),
-	Citation: dynamic(() => import('../../components/citation/citation')),
+	Citation: dynamic(() => import('../../components/citation')),
 	Subscribe: dynamic(() => import('../../components/subscribe'))
 }
 
