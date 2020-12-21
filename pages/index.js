@@ -17,10 +17,7 @@ export default function Portfolio({ groupedList }) {
 	return (
 		<>
 			<Intro />
-			<SubscribeSmall />
-			<SubscribeBig />
 			<BlogList groupedList={groupedList} />
-			<Footer />
 		</>
 	)
 }

@@ -1,13 +1,9 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
+import moment from 'moment'
 
-const links = [
-	{ href: 'https://github.com/vercel/next.js', label: 'GitHub' },
-	{ href: 'https://nextjs.org/docs', label: 'Docs' }
-]
-
-export default function Nav() {
+export default function Nav({ title, location, date }) {
 	const [mounted, setMounted] = useState(false)
 	const [showModal, setShowModal] = useState(false)
 	const { theme, setTheme } = useTheme()
@@ -16,22 +12,62 @@ export default function Nav() {
 
 	return (
 		<nav className='bg-gray-100 dark:bg-black mb-8 border-b-2 border-black dark:border-gray-100 sticky top-0 z-10'>
-			<ul className='flex justify-between items-center pt-3 pb-1'>
+			<ul className='flex justify-between items-center pt-5 pb-3'>
 				<li>
 					<Link href='/'>
-						<a className='rounded p-2 h-10 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
-							Home
-						</a>
+						<button
+							aria-label='Send As Email'
+							type='button'
+							className='hover:bg-gray-300 dark:hover:bg-gray-700
+						duration-200 rounded p-2 h-10 w-10'>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								fill='none'
+								viewBox='0 0 24 24'
+								stroke='currentColor'>
+								<path
+									stroke-linecap='round'
+									stroke-linejoin='round'
+									stroke-width='2'
+									d='M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z'
+								/>
+							</svg>
+						</button>
 					</Link>
 				</li>
+				<li className='flex flex-row gap-x-4'>
+					<p className='text-2xl my-0 pr-4 border-r-2 border-black'>
+						{title}
+					</p>
+					<div className='flex flex-col align-middle'>
+						<p className='text-sm my-0'>
+							{moment(date).format('MMMM DD, YYYY')}
+						</p>
+						<p className='text-sm my-0'>{location}</p>
+					</div>
+				</li>
 				<li className='gap-2'>
-					<a
-						href={`mailto:?subject=Hello&body=Hello`}
-						className='rounded p-2 h-10 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'
-						target='_blank'
-						rel='noopener noreferrer'
-						aria-label='Email'>
-						Share
+					<a target='_blank' rel='noopener noreferrer' aria-label='Email'>
+						<button
+							aria-label='Send As Email'
+							type='button'
+							className='hover:bg-gray-300 dark:hover:bg-gray-700
+						duration-200 rounded p-2 h-10 w-10'>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								width='20'
+								height='20'
+								viewBox='0 0 24 24'
+								fill='none'
+								stroke='currentColor'
+								stroke-width='2'
+								stroke-linecap='round'
+								stroke-linejoin='round'
+								class='feather feather-mail'>
+								<path d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'></path>
+								<polyline points='22,6 12,13 2,6'></polyline>
+							</svg>
+						</button>
 					</a>
 
 					<button
@@ -42,11 +78,18 @@ export default function Nav() {
 						duration-200 rounded p-2 h-10 w-10'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
-							viewBox='0 0 20 20'
-							fill='currentColor'
-							className='h-6 w-6 text-black dark:text-gray-100'>
-							<path d='M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z' />
-							<path d='M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z' />
+							width='20'
+							height='20'
+							viewBox='0 0 24 24'
+							fill='none'
+							stroke='currentColor'
+							stroke-width='2'
+							stroke-linecap='round'
+							stroke-linejoin='round'
+							class='feather feather-share'>
+							<path d='M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8'></path>
+							<polyline points='16 6 12 2 8 6'></polyline>
+							<line x1='12' y1='2' x2='12' y2='15'></line>
 						</svg>
 					</button>
 					{showModal ? (
@@ -114,17 +157,45 @@ export default function Nav() {
 						{mounted && (
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
-								viewBox='0 0 20 20'
-								fill='currentColor'
-								className='h-6 w-6 text-black dark:text-gray-100'>
-								{theme === 'dark' ? (
-									<path
-										fill-rule='evenodd'
-										d='M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z'
-										clip-rule='evenodd'
-									/>
+								width='20'
+								height='20'
+								viewBox='0 0 24 24'
+								fill='none'
+								stroke='currentColor'
+								stroke-width='2'
+								stroke-linecap='round'
+								stroke-linejoin='round'
+								class='feather feather-moon'>
+								{theme === 'light' ? (
+									<path d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'></path>
 								) : (
-									<path d='M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z' />
+									<>
+										<circle cx='12' cy='12' r='5'></circle>
+										<line x1='12' y1='1' x2='12' y2='3'></line>
+										<line x1='12' y1='21' x2='12' y2='23'></line>
+										<line
+											x1='4.22'
+											y1='4.22'
+											x2='5.64'
+											y2='5.64'></line>
+										<line
+											x1='18.36'
+											y1='18.36'
+											x2='19.78'
+											y2='19.78'></line>
+										<line x1='1' y1='12' x2='3' y2='12'></line>
+										<line x1='21' y1='12' x2='23' y2='12'></line>
+										<line
+											x1='4.22'
+											y1='19.78'
+											x2='5.64'
+											y2='18.36'></line>
+										<line
+											x1='18.36'
+											y1='5.64'
+											x2='19.78'
+											y2='4.22'></line>
+									</>
 								)}
 							</svg>
 						)}

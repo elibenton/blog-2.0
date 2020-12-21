@@ -39,7 +39,6 @@ export default function PostPage({ source, frontMatter, params }) {
 	const content = hydrate(source, { components })
 	return (
 		<>
-			{/* <Wrapper> */}
 			<Head>
 				<title>{frontMatter.title} | Blog</title>
 				<meta property='og:title' content={frontMatter.title} />
@@ -51,7 +50,11 @@ export default function PostPage({ source, frontMatter, params }) {
 						content='https://ia.media-imdb.com/images/rock.jpg'
 					/> */}
 			</Head>
-			<Nav />
+			<Nav
+				title={frontMatter.title}
+				date={frontMatter.date}
+				location={frontMatter.location}
+			/>
 			<div className='flex flex-col sm:flex-row justify-between space-y-4'>
 				<div className='lg:ml-8'>
 					<h1 className='font-akzidenz text-4xl md:text-6xl max-w-3xl leading-none '>
@@ -82,8 +85,6 @@ export default function PostPage({ source, frontMatter, params }) {
 			<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-16'>
 				<main>{content}</main>
 			</div>
-			<Footer />
-			{/* </Wrapper> */}
 		</>
 	)
 }

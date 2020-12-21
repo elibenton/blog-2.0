@@ -16,7 +16,7 @@ export default function Intro() {
 					<br className='flex' /> I'm Eli
 					<span className='hidden sm:inline'> Cohen</span>.
 				</h1>
-				<div className='flex justify-between sm:px-1'>
+				{/* <div className='flex justify-between sm:px-1'>
 					<div className='flex gap-2 lg:gap-4'>
 						<Link href='/about'>
 							<a className='text-sm bg-gray-200 rounded p-3 h-10hover:bg-gray-400 duration-200'>
@@ -57,7 +57,7 @@ export default function Intro() {
 							</svg>
 						)}
 					</button>
-				</div>
+				</div>*/}
 			</div>
 			<p className='text-2xl sm:text-3xl max-w-3xl text-left leading-tight'>
 				I'm a freelance journalist working in multiple mediums — primarily{' '}
