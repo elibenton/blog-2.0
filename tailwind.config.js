@@ -1,5 +1,3 @@
-const { extend } = require('lodash')
-
 module.exports = {
 	darkMode: 'class',
 	purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
@@ -22,14 +20,17 @@ module.exports = {
 			'4xl': '2.5rem',
 			'5xl': '3.5rem',
 			'6xl': '5rem',
-			'7xl': '8rem'
+			'7xl': '6rem'
 		}
 	},
 	variants: {
 		textDecoration: ['hover', 'group-hover', 'active'],
 		fontStyle: ['hover', 'group-hover'],
 		textColor: ['hover', 'group-hover', 'active', 'dark'],
-		typography: ['dark']
+		typography: ['dark'],
+		display: ['group-hover', 'responsive'],
+		flex: ['group-hover'],
+		transitionDuration: ['group-hover', 'hover']
 	},
 	plugins: [require('@tailwindcss/typography')]
 }

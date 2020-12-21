@@ -36,9 +36,7 @@ export default function Wrapper({ children }) {
 				<meta name='msapplication-TileColor' content='#da532c' />
 				<meta name='theme-color' content='#ffffff' />
 			</Head>
-			<body className='bg-gray-100 dark:bg-gray-800  text-white dark:text-black'>
-				{children}
-			</body>
+			<body className=''>{children}</body>
 		</>
 	)
 }

@@ -32,7 +32,7 @@ const components = {
 	TestComponent: dynamic(() => import('../../components/test-component')),
 	Image: dynamic(() => import('../../components/image')),
 	Citation: dynamic(() => import('../../components/citation')),
-	Subscribe: dynamic(() => import('../../components/subscribe'))
+	Subscribe: dynamic(() => import('../../components/subscribe-big'))
 }
 
 export default function PostPage({ source, frontMatter, params }) {
@@ -52,7 +52,7 @@ export default function PostPage({ source, frontMatter, params }) {
 					/> */}
 			</Head>
 			<Nav />
-			<div className='flex flex-col sm:flex-row justify-between md:mt-12 space-y-4'>
+			<div className='flex flex-col sm:flex-row justify-between space-y-4'>
 				<div className='lg:ml-8'>
 					<h1 className='font-akzidenz text-4xl md:text-6xl max-w-3xl leading-none '>
 						{frontMatter.title}

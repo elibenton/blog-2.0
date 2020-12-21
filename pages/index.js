@@ -8,6 +8,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { groups } from 'd3'
+import SubscribeBig from '../components/subscribe-big'
+import SubscribeSmall from '../components/subscribe-small'
 
 const root = process.cwd()
 
@@ -15,6 +17,8 @@ export default function Portfolio({ groupedList }) {
 	return (
 		<>
 			<Intro />
+			<SubscribeSmall />
+			<SubscribeBig />
 			<BlogList groupedList={groupedList} />
 			<Footer />
 		</>

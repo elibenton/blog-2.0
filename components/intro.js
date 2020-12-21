@@ -11,12 +11,12 @@ export default function Intro() {
 	return (
 		<section className='flex flex-col md:max-w-3xl mx-6 pt-2 sm:pt-12 min-h-screen text-left'>
 			<div className='max-w-5xl flex flex-col justify-between'>
-				<h1 className='text-6xl leading-tight text-left font-bold my-5'>
+				<h1 className='text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8'>
 					Hello,
-					<br className='flex sm:hidden' /> I'm Eli
+					<br className='flex' /> I'm Eli
 					<span className='hidden sm:inline'> Cohen</span>.
 				</h1>
-				<div className='flex justify-between'>
+				<div className='flex justify-between sm:px-1'>
 					<div className='flex gap-2 lg:gap-4'>
 						<Link href='/about'>
 							<a className='text-sm bg-gray-200 rounded p-3 h-10hover:bg-gray-400 duration-200'>
@@ -44,7 +44,7 @@ export default function Intro() {
 								xmlns='http://www.w3.org/2000/svg'
 								viewBox='0 0 20 20'
 								fill='currentColor'
-								className='h-4 w-4 text-gray-800 dark:text-gray-100'>
+								className='h-4 w-4 text-black dark:text-gray-100'>
 								{theme === 'dark' ? (
 									<path
 										fillRule='evenodd'
@@ -71,7 +71,7 @@ export default function Intro() {
 			<div className='absolute bottom-0 inset-x-0 mb-8'>
 				<div className='flex justify-center'>
 					<svg
-						className='animate-bounce w-12 h-12 text-gray-800 dark:text-gray-100'
+						className='animate-bounce w-12 h-12 text-black dark:text-gray-100'
 						fill='none'
 						stroke-linecap='round'
 						stroke-linejoin='round'
