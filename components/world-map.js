@@ -8,7 +8,13 @@ import {
 const geoUrl = new Map([
 	[
 		'india',
-		{ file: '/gadm36_IND_1.json', yaw: -82, pitch: -22, roll: 0, scale: 1150 }
+		{
+			file: '/topo/gadm36_IND_1.json',
+			yaw: -82,
+			pitch: -22,
+			roll: 0,
+			scale: 1150
+		}
 	],
 	[
 		'united-states',
