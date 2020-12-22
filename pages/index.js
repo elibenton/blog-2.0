@@ -1,5 +1,4 @@
 import Intro from '../components/intro'
-import Footer from '../components/footer'
 import BlogList from '../components/blog-list'
 
 import _ from 'lodash'
@@ -8,8 +7,6 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { groups } from 'd3'
-import SubscribeBig from '../components/subscribe-big'
-import SubscribeSmall from '../components/subscribe-small'
 
 const root = process.cwd()
 
@@ -30,7 +27,8 @@ export async function getStaticProps() {
 			slug: p.replace(/\.mdx/, ''),
 			title: matter(content).data.title,
 			date: matter(content).data.date,
-			location: matter(content).data.location
+			location: matter(content).data.location,
+			country: matter(content).data.country
 		}
 	})
 
@@ -42,6 +40,8 @@ export async function getStaticProps() {
 		d => d.tier,
 		d => d.display
 	)
+
+	console.log(groupedList)
 
 	return { props: { groupedList } }
 }

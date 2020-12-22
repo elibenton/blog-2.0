@@ -10,14 +10,17 @@ export default function BlogList({ groupedList }) {
 						{entry
 							.slice(1, 2)
 							.map(article =>
-								article.map(({ slug, title, location, date }) => (
-									<Entry
-										title={title}
-										link={slug}
-										dates={date}
-										locations={location}
-									/>
-								))
+								article.map(
+									({ slug, title, location, date, country }) => (
+										<Entry
+											title={title}
+											link={slug}
+											dates={date}
+											locations={location}
+											country={country}
+										/>
+									)
+								)
 							)}
 					</Section>
 				))}
@@ -26,14 +29,17 @@ export default function BlogList({ groupedList }) {
 						{entry
 							.slice(1, 2)
 							.map(article =>
-								article.map(({ slug, title, location, date }) => (
-									<Entry
-										title={title}
-										link={slug}
-										dates={date}
-										locations={location}
-									/>
-								))
+								article.map(
+									({ slug, title, location, date, country }) => (
+										<Entry
+											title={title}
+											link={slug}
+											dates={date}
+											locations={location}
+											country={country}
+										/>
+									)
+								)
 							)}
 					</Section>
 				))}
@@ -42,14 +48,17 @@ export default function BlogList({ groupedList }) {
 						{entry
 							.slice(1, 2)
 							.map(article =>
-								article.map(({ slug, title, location, date }) => (
-									<Entry
-										title={title}
-										link={slug}
-										dates={date}
-										locations={location}
-									/>
-								))
+								article.map(
+									({ slug, title, location, date, country }) => (
+										<Entry
+											title={title}
+											link={slug}
+											dates={date}
+											locations={location}
+											country={country}
+										/>
+									)
+								)
 							)}
 					</Section>
 				))}

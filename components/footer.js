@@ -38,17 +38,23 @@ export default function Footer() {
 					</ul>
 					<ul className='py-3 self-end'>
 						<li>
-							<a className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
+							<a
+								href='tel:+1205-259-8250'
+								className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
 								+1 (205) 259-8250
 							</a>
 						</li>
 						<li>
-							<a className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
+							<a
+								href='mailto:mail@elibenton.co'
+								className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
 								mail@elibenton.com
 							</a>
 						</li>
 						<li>
-							<a className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
+							<a
+								href='https://keybase.io/eli_benton'
+								className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
 								898A 0867 BD12 1820
 							</a>
 						</li>
@@ -63,17 +69,23 @@ export default function Footer() {
 					<a className='font-bold p-1 text-1xl'>Terms</a>
 				</li>
 				<li>
-					<a className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
+					<a
+						href='https://choosealicense.com/licenses/gpl-3.0/'
+						className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
 						GPLv3
 					</a>
 				</li>
 				<li>
-					<a className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
-						Privacy Policy
-					</a>
+					<Link href='/privacy'>
+						<a className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
+							Privacy Policy
+						</a>
+					</Link>
 				</li>
 				<li>
-					<a className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
+					<a
+						href='https://creativecommons.org/licenses/by-sa/4.0/'
+						className='rounded p-1 hover:bg-gray-300 dark:hover:bg-gray-700 duration-200'>
 						© Eli Cohen {new Date().getFullYear()}
 					</a>
 				</li>

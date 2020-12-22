@@ -1,12 +1,14 @@
 import fs from 'fs'
 import matter from 'gray-matter'
 import hydrate from 'next-mdx-remote/hydrate'
+import _ from 'lodash'
 import renderToString from 'next-mdx-remote/render-to-string'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
 import path from 'path'
 import CustomLink from '../../components/custom-link'
+import readingTime from 'reading-time'
 
 import Nav from '../../components/nav'
 
@@ -15,10 +17,6 @@ import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 import Wrapper from '../../components/wrapper'
 import Footer from '../../components/footer'
 import Header from '../../components/header'
-
-import smartypants from '@silvenon/remark-smartypants'
-import codeblock from 'remark-highlight.js'
-import autolink from 'remark-autolink-headings'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -76,9 +74,20 @@ export default function PostPage({ source, frontMatter, params }) {
 						{frontMatter.location && (
 							<li className='pl-4'>{frontMatter.location}</li>
 						)}
-						{frontMatter.medium && (
-							<li className='pl-4'>{frontMatter.medium}</li>
+						{frontMatter.country && (
+							<li className='pl-4'>{frontMatter.country}</li>
 						)}
+						{frontMatter.template && (
+							<li className='pl-4'>{frontMatter.template}</li>
+						)}
+						{frontMatter.readingTime && (
+							<li className='pl-4'>
+								{`${_.ceil(
+									frontMatter.readingTime.minutes * 1.2
+								)} minutes • ${frontMatter.readingTime.words} words`}
+							</li>
+						)}
+						{console.log(frontMatter.readingTime)}
 					</ul>
 				</div>
 			</div>
@@ -99,8 +108,13 @@ export const getStaticProps = async ({ params }) => {
 		components,
 		// Optionally pass remark/rehype plugins
 		mdxOptions: {
-			remarkPlugins: [smartypants, autolink, codeblock],
-			rehypePlugins: []
+			remarkPlugins: [
+				require('remark-autolink-headings'),
+				require('remark-slug'),
+				require('remark-code-titles'),
+				require('smartypants')
+			],
+			rehypePlugins: [require('mdx-prism')]
 		},
 		scope: data
 	})
@@ -108,7 +122,11 @@ export const getStaticProps = async ({ params }) => {
 	return {
 		props: {
 			source: mdxSource,
-			frontMatter: data
+			frontMatter: {
+				wordCount: content.split(/\s+/gu).length,
+				readingTime: readingTime(content),
+				...data
+			}
 		}
 	}
 }

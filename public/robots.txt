@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://elibenton.co/sitemap.xml

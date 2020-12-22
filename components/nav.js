@@ -36,17 +36,17 @@ export default function Nav({ title, location, date }) {
 					</Link>
 				</li>
 				<li className='flex flex-row gap-x-4'>
-					<p className='text-2xl my-0 pr-4 border-r-2 border-black'>
+					<p className='text-2xl my-0 pr-4 sm:border-r-2 border-black leading-tight'>
 						{title}
 					</p>
-					<div className='flex flex-col align-middle'>
+					<div className='hidden sm:flex flex-col align-middle'>
 						<p className='text-sm my-0'>
 							{moment(date).format('MMMM DD, YYYY')}
 						</p>
 						<p className='text-sm my-0'>{location}</p>
 					</div>
 				</li>
-				<li className='gap-2'>
+				<li className='hidden sm:block gap-2'>
 					<a target='_blank' rel='noopener noreferrer' aria-label='Email'>
 						<button
 							aria-label='Send As Email'

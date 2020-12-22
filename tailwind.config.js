@@ -30,7 +30,8 @@ module.exports = {
 		typography: ['dark'],
 		display: ['group-hover', 'responsive'],
 		flex: ['group-hover'],
-		transitionDuration: ['group-hover', 'hover']
+		transitionDuration: ['group-hover', 'hover'],
+		borderOpacity: ['hover']
 	},
 	plugins: [require('@tailwindcss/typography')]
 }

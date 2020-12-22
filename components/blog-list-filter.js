@@ -7,14 +7,18 @@ export default function BlogList({ filteredList }) {
 		// 	{filteredList.map(entry => 'hello' && console.log(entry))}
 		// </div>
 		<div className='flex flex-row'>
-			{filteredList.map(({ title, slug, date, location }) => (
-				<Entry
-					title={title}
-					link={slug}
-					dates={date}
-					locations={location}
-				/>
-			))}
+			{filteredList.map(
+				({ title, slug, date, location, country, coords }) => (
+					<Entry
+						title={title}
+						link={slug}
+						dates={date}
+						locations={location}
+						country={country}
+						coords={coords}
+					/>
+				)
+			)}
 		</div>
 	)
 }
