@@ -105,10 +105,10 @@ export default function Subscribe() {
 					type='email'
 					autoComplete='email'
 					required
-					className='px-2 py-2 mt-1 text-sm block w-full bg-gray-100 border-black border-b text-black dark:text-gray-100'
+					className='px-2 py-2 mt-1 text-sm block w-full bg-gray-100 dark:bg-black border-black dark:border-white border-b text-black dark:text-gray-100'
 				/>
 				<button
-					className='flex items-center justify-center absolute right-1 top-1 px-2 text-sm h-7 border border-black dark:bg-white text-black dark:text-white rounded w-20'
+					className='flex items-center justify-center absolute right-1 top-1 px-2 text-sm h-7 border border-black dark:bg-white text-black rounded w-20'
 					onClick={subscribe}>
 					{form.state === 'loading' ? (
 						<svg

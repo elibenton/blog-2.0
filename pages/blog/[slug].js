@@ -10,10 +10,10 @@ import renderToString from 'next-mdx-remote/render-to-string'
 import _ from 'lodash'
 import path from 'path'
 import readingTime from 'reading-time'
+import moment from 'moment'
 
 // Component Imports
-import Nav from '../../components/nav'
-import CustomLink from '../../components/custom-link'
+import Nav from '../../components/layout/post-nav'
 
 // Utililty Imports
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
@@ -23,13 +23,11 @@ import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
-	a: CustomLink,
 	// It also works with dynamically-imported components, which is especially
 	// useful for conditionally loading components for certain routes.
 	// See the notes in README.md for more details.
-	TestComponent: dynamic(() => import('../../components/test-component')),
 	Image: dynamic(() => import('../../components/image')),
-	Citation: dynamic(() => import('../../components/citation')),
+	Citation: dynamic(() => import('../../components/citation/citation')),
 	Subscribe: dynamic(() => import('../../components/subscribe-big'))
 }
 
@@ -56,24 +54,32 @@ export default function PostPage({
 			<Nav title={title} date={date} location={location} />
 			<div className='flex flex-col sm:flex-row justify-between space-y-4'>
 				<div className='lg:ml-8'>
-					<h1 className='font-akzidenz text-4xl md:text-6xl max-w-3xl leading-none '>
+					<h1 className='font-akzidenz text-4xl md:text-7xl max-w-3xl leading-none '>
 						{title}
 					</h1>
 					{description && (
-						<p className='description max-w-3xl'>{description}</p>
+						<p className='italic text-lg max-w-3xl'>{description}</p>
 					)}
 				</div>
 				<div className='self-start sm:self-center lg:mr-16'>
 					<ul className='border-l-2 border-black'>
-						{date && <li className='pl-4'>{JSON.stringify(date)}</li>}
-						{location && <li className='pl-4'>{location}</li>}
-						{country && <li className='pl-4'>{country}</li>}
-						{template && <li className='pl-4'>{template}</li>}
-						{readingTime && (
+						{date && (
 							<li className='pl-4'>
-								{`${_.ceil(minutes * 1.2)} minutes • ${words} words`}
+								{moment(date).format('MMMM DD, YYYY')}
 							</li>
 						)}
+						{location && (
+							<li className='pl-4'>
+								{location},&nbsp;
+								{country && country}
+							</li>
+						)}
+						<li className='pl-4'>
+							{template && _.upperFirst(template)}
+							{readingTime &&
+								template !== 'audio' &&
+								` • ${_.ceil(minutes * 1.2)} minutes • ${words} words`}
+						</li>
 					</ul>
 				</div>
 			</div>

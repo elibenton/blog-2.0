@@ -1,34 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yoursitehere.com/about</loc>
+    <loc>https://elibenton.co/about</loc>
   </url>
 
   <url>
-    <loc>https://yoursitehere.com</loc>
+    <loc>https://elibenton.co</loc>
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/observable</loc>
+    <loc>https://elibenton.co/newsletter</loc>
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/player</loc>
+    <loc>https://elibenton.co/observable</loc>
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/projects</loc>
+    <loc>https://elibenton.co/player</loc>
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/blog/[slug]</loc>
+    <loc>https://elibenton.co/privacy</loc>
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/place/[place]</loc>
+    <loc>https://elibenton.co/projects</loc>
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/tag/[tag]</loc>
+    <loc>https://elibenton.co/blog/[slug]</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/places/[place]</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/places/index</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/tags/[tag]</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/tags/index</loc>
   </url>
 </urlset>

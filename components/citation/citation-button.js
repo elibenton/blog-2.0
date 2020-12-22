@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Color from '../utils/colors'
+import Color from '../../utils/colors'
 
 const Icon = styled.span`
 	display: inline-block;

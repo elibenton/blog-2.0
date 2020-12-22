@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import SmallSubscribe from '../components/subscribe-small'
+import SmallSubscribe from '../subscribe-small'
 
 export default function Footer() {
 	return (
-		<section className='group mt-24 h-auto md:mt-32 bg-gray-100 dark:bg-black mb-2 border-t-2 border-black dark:border-gray-100 overflow-hidden flex flex-col md:flex-row justify-between text-sm'>
+		<div className='group mt-24 h-auto md:mt-32 bg-gray-100 dark:bg-black mb-2 border-t-2 border-black dark:border-gray-100 overflow-hidden flex flex-col md:flex-row justify-between text-sm'>
 			<div className='flex flex-col md:flex-row gap-x-4'>
 				<div className='flex flex-row'>
 					<ul className='py-3'>
@@ -90,6 +90,6 @@ export default function Footer() {
 					</a>
 				</li>
 			</ul>
-		</section>
+		</div>
 	)
 }

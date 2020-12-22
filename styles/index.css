@@ -27,6 +27,10 @@ p {
 	margin: 10px 0;
 }
 
+::selection {
+	@apply dark:text-yellow-300 dark:bg-transparent bg-yellow-300;
+}
+
 .navbar {
 	position: sticky;
 	z-index: 10;

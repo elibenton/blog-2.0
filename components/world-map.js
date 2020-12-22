@@ -1,74 +1,32 @@
+// Package Imports
+import { geoAlbers, geoEqualEarth, geoMercator } from 'd3'
 import {
 	ComposableMap,
 	Geographies,
 	Geography,
-	Marker
+	Marker,
+	Graticule
 } from 'react-simple-maps'
 
-const geoUrl = new Map([
-	[
-		'india',
-		{
-			file: '/topo/gadm36_IND_1.json',
-			yaw: -82,
-			pitch: -22,
-			roll: 0,
-			scale: 1150
-		}
-	],
-	[
-		'united-states',
-		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
-	],
-	[
-		'myanmar',
-		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
-	],
-	[
-		'spain',
-		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
-	],
-	[
-		'nepal',
-		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
-	],
-	[
-		'france',
-		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
-	],
-	[
-		'california',
-		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
-	],
-	[
-		'alabama',
-		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
-	],
-	[
-		'ecaudor',
-		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
-	],
-	[
-		'argentina',
-		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
-	]
-])
+// Utility Imports
+import { map } from '../utils/country-maps'
 
 const WorldMap = ({ coordinates, country }) => {
 	return (
 		<ComposableMap
-			width={600}
-			height={600}
-			projection='geoMercator'
+			width={map.get(country).width}
+			height={map.get(country).height}
+			projection={country === 'world' ? 'geoEqualEarth' : 'geoMercator'}
 			projectionConfig={{
 				rotate: [
-					geoUrl.get(country).yaw,
-					geoUrl.get(country).pitch,
-					geoUrl.get(country).roll
+					map.get(country).yaw,
+					map.get(country).pitch,
+					map.get(country).roll
 				],
-				scale: 1150
+				scale: map.get(country).scale
 			}}>
-			<Geographies geography={geoUrl.get(country).file}>
+			{country === 'world' && <Graticule stroke='#F53' step={[11.99, 11]} />}
+			<Geographies geography={map.get(country).file}>
 				{({ geographies }) =>
 					geographies.map(geo => (
 						<Geography

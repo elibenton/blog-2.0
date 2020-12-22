@@ -6,22 +6,26 @@ import matter from 'gray-matter'
 
 // Component Imports
 import Entry from '../../components/entry'
+import SimpleNav from '../../components/layout/simple-nav'
 
 export default function Portfolio({ filteredList, params }) {
 	return (
-		<div className='flex flex-col'>
-			<h1 className='text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8'>
-				{_.startCase(params.tag)}
-			</h1>
-			{filteredList.map(({ title, slug, date, location }) => (
-				<Entry
-					title={title}
-					link={slug}
-					dates={date}
-					locations={location}
-				/>
-			))}
-		</div>
+		<>
+			<SimpleNav />
+			<div className='flex flex-col'>
+				<h1 className='text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8'>
+					{_.startCase(params.tag)}
+				</h1>
+				{filteredList.map(({ title, slug, date, location }) => (
+					<Entry
+						title={title}
+						link={slug}
+						dates={date}
+						locations={location}
+					/>
+				))}
+			</div>
+		</>
 	)
 }
 
