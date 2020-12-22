@@ -1,14 +1,16 @@
-import Intro from '../components/intro'
-import BlogList from '../components/blog-list'
-
-import _ from 'lodash'
-import moment from 'moment'
+// Package Imports
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { sortBy } from 'lodash'
 import { groups } from 'd3'
 
-const root = process.cwd()
+// Component Imports
+import Intro from '../components/intro'
+import BlogList from '../components/blog-list'
+
+// Utilility Imports
+import groupByDate from '../utils/group-by-date'
 
 export default function Portfolio({ groupedList }) {
 	return (
@@ -18,6 +20,8 @@ export default function Portfolio({ groupedList }) {
 		</>
 	)
 }
+
+const root = process.cwd()
 
 export async function getStaticProps() {
 	const contentRoot = path.join(root, 'posts')
@@ -33,64 +37,13 @@ export async function getStaticProps() {
 	})
 
 	const groupedList = groups(
-		_.sortBy(
-			postData.map(date => group(date)),
+		sortBy(
+			postData.map(date => groupByDate(date)),
 			'date'
 		).reverse(),
 		d => d.tier,
 		d => d.display
 	)
 
-	console.log(groupedList)
-
 	return { props: { groupedList } }
-}
-
-function group(post) {
-	const postDate = moment(post.date)
-
-	if (postDate.isAfter(moment().subtract(1, 'year'))) {
-		return {
-			...post,
-			display: postDate.format('MMMM YYYY'),
-			tier: 'tier_1'
-		}
-	} else if (
-		postDate.isBetween(
-			moment().subtract(3, 'year'),
-			moment().subtract(1, 'year')
-		)
-	) {
-		if (['12', '1', '2'].includes(postDate.format('M'))) {
-			return {
-				...post,
-				display: `Winter ${postDate.format('YYYY')}`,
-				tier: 'tier_2'
-			}
-		} else if (['3', '4', '5'].includes(postDate.format('M'))) {
-			return {
-				...post,
-				display: `Spring ${postDate.format('YYYY')}`,
-				tier: 'tier_2'
-			}
-		} else if (['6', '7', '8'].includes(postDate.format('M'))) {
-			return {
-				...post,
-				display: `Summer ${postDate.format('YYYY')}`,
-				tier: 'tier_2'
-			}
-		} else {
-			return {
-				...post,
-				display: `Autumn ${postDate.format('YYYY')}`,
-				tier: 'tier_2'
-			}
-		}
-	} else {
-		return {
-			...post,
-			display: postDate.format('YYYY'),
-			tier: 'tier_3'
-		}
-	}
 }

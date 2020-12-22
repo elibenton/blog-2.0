@@ -1,14 +1,11 @@
-import BlogListFiltered from '../../components/blog-list-filter'
-import Entry from '../../components/entry'
-
+// Package Imports
 import _ from 'lodash'
-import moment from 'moment'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { groups } from 'd3'
 
-const root = process.cwd()
+// Component Imports
+import Entry from '../../components/entry'
 
 export default function Portfolio({ filteredList, params }) {
 	return (
@@ -28,24 +25,23 @@ export default function Portfolio({ filteredList, params }) {
 	)
 }
 
+const root = process.cwd()
+
 export async function getStaticProps({ params }) {
 	const contentRoot = path.join(root, 'posts')
 	const postData = fs.readdirSync(contentRoot).map(p => {
 		const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
+		const frontmatter = matter(content).data
+
 		return {
-			slug: p.replace(/\.mdx/, ''),
-			title: matter(content).data.title,
-			date: matter(content).data.date,
-			location: matter(content).data.location,
-			tags: matter(content).data.tags
+			...frontmatter,
+			slug: p.replace(/\.mdx/, '')
 		}
 	})
 
 	const filteredList = postData.filter(post =>
 		post.tags.map(tag => _.kebabCase(tag)).includes(params.tag)
 	)
-
-	console.log(postData)
 
 	return { props: { filteredList, params } }
 }
@@ -55,7 +51,7 @@ export async function getStaticPaths() {
 
 	const tags = fs.readdirSync(contentRoot).map(p => {
 		const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
-		return matter(content).data.tags && matter(content).data.tags
+		return matter(content).data.tags
 	})
 
 	const tagsUniq = _.uniq(tags.flat()).map(tag => _.kebabCase(tag))
@@ -65,8 +61,6 @@ export async function getStaticPaths() {
 			tag
 		}
 	}))
-
-	console.log(tagsUniq)
 
 	return {
 		paths: paths,

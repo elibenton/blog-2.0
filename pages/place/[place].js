@@ -1,12 +1,12 @@
-import Entry from '../../components/entry'
-import WorldMap from '../../components/world-map'
-
+// Package Imports
 import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-const root = process.cwd()
+// Component Imports
+import Entry from '../../components/entry'
+import WorldMap from '../../components/world-map'
 
 export default function Portfolio({ filteredList, params }) {
 	return (
@@ -15,24 +15,27 @@ export default function Portfolio({ filteredList, params }) {
 				<h1 className='text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8'>
 					{_.startCase(params.place)}
 				</h1>
-				{filteredList.map(
-					({ title, slug, date, location, country, coords }) => (
-						<Entry
-							title={title}
-							link={slug}
-							dates={date}
-							locations={location}
-							country={country}
-						/>
-					)
-				)}
+				{filteredList.map(({ title, slug, date, location, country }) => (
+					<Entry
+						title={title}
+						link={slug}
+						dates={date}
+						locations={location}
+						country={country}
+					/>
+				))}
 			</div>
 			<div className='pt-20 top-0 self-start w-1/3 text-gray-100 sticky-top'>
-				<WorldMap coordinates={filteredList.map(({ coords }) => coords)} />
+				<WorldMap
+					coordinates={filteredList.map(({ coords }) => coords)}
+					country={params.place}
+				/>
 			</div>
 		</div>
 	)
 }
+
+const root = process.cwd()
 
 export async function getStaticProps({ params }) {
 	const contentRoot = path.join(root, 'posts')
@@ -40,29 +43,21 @@ export async function getStaticProps({ params }) {
 	const postData = await Promise.all(
 		fs.readdirSync(contentRoot).map(async p => {
 			const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
+			const frontmatter = matter(content).data
 
 			const res = await fetch(
-				`https://maps.googleapis.com/maps/api/geocode/json?address=${
-					matter(content).data.location
-				}&key=AIzaSyBNwpvFZDye2gMprVqJvGgT4uoN6cdW5jo`
+				`https://maps.googleapis.com/maps/api/geocode/json?address=${frontmatter.location}&key=AIzaSyBNwpvFZDye2gMprVqJvGgT4uoN6cdW5jo`
 			)
 
 			const coords = await res.json()
-			console.log(coords)
 
 			return {
+				...frontmatter,
 				slug: p.replace(/\.mdx/, ''),
-				title: matter(content).data.title,
-				date: matter(content).data.date,
-				location: matter(content).data.location,
-				tags: matter(content).data.tags,
-				country: matter(content).data.country,
 				coords: coords.results[0].geometry.location
 			}
 		})
 	)
-
-	console.log(postData)
 
 	const filteredList = postData.filter(
 		post => _.kebabCase(post.country) === params.place
@@ -86,8 +81,6 @@ export async function getStaticPaths() {
 			place
 		}
 	}))
-
-	console.log(placesUniq)
 
 	return {
 		paths: paths,

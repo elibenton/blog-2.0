@@ -1,6 +1,3 @@
-// src/components/WorldMap.js
-
-import React from 'react'
 import {
 	ComposableMap,
 	Geographies,
@@ -8,19 +5,64 @@ import {
 	Marker
 } from 'react-simple-maps'
 
-const geoUrl = '/gadm36_IND_1.json'
+const geoUrl = new Map([
+	[
+		'india',
+		{ file: '/gadm36_IND_1.json', yaw: -82, pitch: -22, roll: 0, scale: 1150 }
+	],
+	[
+		'united-states',
+		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
+	],
+	[
+		'myanmar',
+		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
+	],
+	[
+		'spain',
+		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
+	],
+	[
+		'nepal',
+		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
+	],
+	[
+		'france',
+		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
+	],
+	[
+		'california',
+		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
+	],
+	[
+		'alabama',
+		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
+	],
+	[
+		'ecaudor',
+		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
+	],
+	[
+		'argentina',
+		{ file: '/gadm36_IND_1.json', yaw: 0, pitch: 0, roll: 0, scale: 1150 }
+	]
+])
 
-const WorldMap = ({ coordinates }) => {
+const WorldMap = ({ coordinates, country }) => {
 	return (
 		<ComposableMap
 			width={600}
 			height={600}
 			projection='geoMercator'
 			projectionConfig={{
-				rotate: [-82, -22, 0],
+				rotate: [
+					geoUrl.get(country).yaw,
+					geoUrl.get(country).pitch,
+					geoUrl.get(country).roll
+				],
 				scale: 1150
 			}}>
-			<Geographies geography={geoUrl}>
+			<Geographies geography={geoUrl.get(country).file}>
 				{({ geographies }) =>
 					geographies.map(geo => (
 						<Geography

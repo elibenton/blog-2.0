@@ -1,12 +1,18 @@
+// Defauly Imports
 import React from 'react'
-import { ThemeProvider } from 'next-themes'
-import '../styles/index.css'
-import Footer from '../components/footer'
 
+// Package Imports
+import { ThemeProvider } from 'next-themes'
 // import 'shikwasa/dist/shikwasa.min.css'
 // import 'shikwasa/dist/shikwasa.chapter.min.css'
 
-function MyApp({ Component, pageProps }) {
+// Style Imports
+import '../styles/index.css'
+
+// Component Imports
+import Footer from '../components/footer'
+
+export default function MyApp({ Component, pageProps }) {
 	return (
 		<React.StrictMode>
 			<ThemeProvider
@@ -18,5 +24,3 @@ function MyApp({ Component, pageProps }) {
 		</React.StrictMode>
 	)
 }
-
-export default MyApp

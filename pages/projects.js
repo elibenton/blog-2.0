@@ -1,3 +1,4 @@
+// Component Imports
 import Project from '../components/project-entry'
 
 export default function Projects() {
