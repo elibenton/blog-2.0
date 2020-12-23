@@ -10,16 +10,6 @@ import moment from 'moment'
 
 // Component Imports
 import SimpleNav from '../../components/layout/simple-nav'
-import { pick } from 'lodash'
-
-const images = [
-	'https://images.pexels.com/photos/1842580/pexels-photo-1842580.jpeg?cs=srgb&dl=pexels-matt-hardy-1842580.jpg&fm=jpg',
-	'https://images.pexels.com/photos/5877919/pexels-photo-5877919.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-	'https://images.pexels.com/photos/4947741/pexels-photo-4947741.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-	'https://images.pexels.com/photos/5480759/pexels-photo-5480759.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-	'https://images.unsplash.com/5/unsplash-kitsune-4.jpg',
-	'https://images.pexels.com/photos/5919596/pexels-photo-5919596.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
-]
 
 export default function ImageGrid({ photosInfo }) {
 	console.log(photosInfo)
@@ -62,7 +52,7 @@ export async function getStaticProps() {
 		Object.entries(folderMap.entries).map(async d => {
 			const imageData = await exifr.parse(
 				path.join(photosRoot, `/${d[0]}`),
-				['ISO', 'FNumber', 'Make', 'Model', 'DateTimeOriginal']
+				['ISO', 'FNumber', 'DateTimeOriginal']
 			)
 
 			return {
