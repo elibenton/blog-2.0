@@ -47,7 +47,5 @@ export async function getStaticProps() {
 
 	const tagsUniq = _.countBy(tags.flat())
 
-	console.log(tagsUniq)
-
 	return { props: { tagsUniq } }
 }

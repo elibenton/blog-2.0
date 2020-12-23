@@ -58,7 +58,9 @@ export async function getStaticProps({ params }) {
 			return {
 				...frontmatter,
 				slug: p.replace(/\.mdx/, ''),
-				coords: coords.results[0].geometry.location
+				coords: coords
+					? coords.results[0].geometry.location
+					: { lat: 0, lon: 0 }
 			}
 		})
 	)

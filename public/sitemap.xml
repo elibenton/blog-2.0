@@ -33,6 +33,14 @@
   </url>
 
   <url>
+    <loc>https://elibenton.co/photos/[photo]</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/photos/index</loc>
+  </url>
+
+  <url>
     <loc>https://elibenton.co/places/[place]</loc>
   </url>
 
