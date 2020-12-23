@@ -9,7 +9,7 @@ import exifr from 'exifr' // MUST BE USED TO NOT ERROR
 import moment from 'moment'
 
 // Component Imports
-import SimpleNav from '../../components/layout/simple-nav'
+import SimpleNav from '../components/layout/simple-nav'
 
 export default function ImageGrid({ photosInfo }) {
 	return (

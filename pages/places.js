@@ -5,9 +5,9 @@ import path from 'path'
 import matter from 'gray-matter'
 
 // Component Imports
-import Entry from '../../components/entry'
-import WorldMap from '../../components/world-map'
-import SimpleNav from '../../components/layout/simple-nav'
+import Entry from '../components/entry'
+import WorldMap from '../components/world-map'
+import SimpleNav from '../components/layout/simple-nav'
 
 export default function PlaceIndex({ postData }) {
 	return (
