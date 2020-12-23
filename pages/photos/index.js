@@ -12,7 +12,6 @@ import moment from 'moment'
 import SimpleNav from '../../components/layout/simple-nav'
 
 export default function ImageGrid({ photosInfo }) {
-	console.log(photosInfo)
 	return (
 		<>
 			<SimpleNav />
