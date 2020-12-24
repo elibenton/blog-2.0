@@ -21,10 +21,6 @@
   </url>
 
   <url>
-    <loc>https://elibenton.co/places</loc>
-  </url>
-
-  <url>
     <loc>https://elibenton.co/player</loc>
   </url>
 
@@ -34,10 +30,6 @@
 
   <url>
     <loc>https://elibenton.co/projects</loc>
-  </url>
-
-  <url>
-    <loc>https://elibenton.co/tags</loc>
   </url>
 
   <url>
@@ -53,6 +45,14 @@
   </url>
 
   <url>
+    <loc>https://elibenton.co/places/index</loc>
+  </url>
+
+  <url>
     <loc>https://elibenton.co/tags/[tag]</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/tags/index</loc>
   </url>
 </urlset>

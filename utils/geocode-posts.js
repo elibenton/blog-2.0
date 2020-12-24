@@ -1,24 +1,30 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import cache from 'memory-cache'
 
-export default function geocodePosts(contentRoot) { 
-   return await Promise.all(
-	fs.readdirSync(contentRoot).map(async p => {
-		const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
-		const frontmatter = matter(content).data
+function checkCache(key) {
+	if (cache.get(key)) {
+		return cache.get(key)
+	} else {
+		const value = callAPI(key)
+		cache.put(key, value)
+		return value
+	}
+}
 
-		const res = await fetch(
-			`https://maps.googleapis.com/maps/api/geocode/json?address=${frontmatter.location}&key=AIzaSyBNwpvFZDye2gMprVqJvGgT4uoN6cdW5jo`
-		)
+function callAPI(key) {
+	const res = await fetch(
+	`https://maps.googleapis.com` +
+					`/maps/api/geocode/json?` +
+					`address=${key}&` +
+					`key=${process.env.GOOGLE_API_KEY}`
+			)
 
-		const coords = await res.json()
+						const data = await res.json()
+	
+}
 
-		return {
-			...frontmatter,
-			slug: p.replace(/\.mdx/, ''),
-			coords: coords.results[0].geometry.location
-		}
-	})
-)
+export default function geocode({location}) {
+	return checkCache(location)
 }

@@ -1,5 +1,4 @@
 // Package Imports
-import { geoAlbers, geoEqualEarth, geoMercator } from 'd3'
 import {
 	ComposableMap,
 	Geographies,

@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 export default function group(post) {
-	const postDate = moment(post.date)
+	const postDate = moment(JSON.parse(post.date))
 
 	if (postDate.isAfter(moment().subtract(1, 'year'))) {
 		return {

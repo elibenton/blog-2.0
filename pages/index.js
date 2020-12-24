@@ -2,6 +2,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import moment from 'moment'
 import { sortBy } from 'lodash'
 import { groups } from 'd3'
 
@@ -12,6 +13,7 @@ import Entry from '../components/entry'
 
 // Utilility Imports
 import groupByDate from '../utils/group-by-date'
+import { data } from 'autoprefixer'
 
 export default function Portfolio({ groupedList }) {
 	return (
@@ -30,7 +32,9 @@ export default function Portfolio({ groupedList }) {
 												<Entry
 													title={title}
 													link={slug}
-													dates={date}
+													dates={moment(JSON.parse(date)).format(
+														'MMMM DD, YYYY'
+													)}
 													locations={location}
 													country={country}
 												/>
@@ -61,18 +65,17 @@ export default function Portfolio({ groupedList }) {
 	)
 }
 
-const root = process.cwd()
-
 export async function getStaticProps() {
-	const contentRoot = path.join(root, 'posts')
+	const contentRoot = path.join(process.cwd(), 'posts')
+
 	const postData = fs.readdirSync(contentRoot).map(p => {
-		const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
+		const file = fs.readFileSync(path.join(contentRoot, p), 'utf8')
+		const { data } = matter(file)
+
 		return {
+			...data,
 			slug: p.replace(/\.mdx/, ''),
-			title: matter(content).data.title,
-			date: matter(content).data.date,
-			location: matter(content).data.location,
-			country: matter(content).data.country
+			date: JSON.stringify(data.date)
 		}
 	})
 
@@ -83,7 +86,7 @@ export async function getStaticProps() {
 		).reverse(),
 		d => d.tier,
 		d => d.display
-	)
+	).sort((a, b) => a - b)
 
 	return { props: { groupedList } }
 }

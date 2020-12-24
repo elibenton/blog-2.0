@@ -3,6 +3,7 @@ import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import moment from 'moment'
 
 // Component Imports
 import Entry from '../../components/entry'
@@ -20,7 +21,7 @@ export default function Portfolio({ filteredList, params }) {
 					<Entry
 						title={title}
 						link={slug}
-						dates={date}
+						dates={moment(JSON.parse(date)).format('MMMM DD, YYYY')}
 						locations={location}
 					/>
 				))}
@@ -39,6 +40,7 @@ export async function getStaticProps({ params }) {
 
 		return {
 			...frontmatter,
+			date: JSON.stringify(frontmatter.date),
 			slug: p.replace(/\.mdx/, '')
 		}
 	})

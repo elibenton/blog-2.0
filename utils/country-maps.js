@@ -6,7 +6,9 @@ export const map = new Map([
 			yaw: -82,
 			pitch: -22,
 			roll: 0,
-			scale: 1150
+			scale: 1150,
+			width: 600,
+			height: 600
 		}
 	],
 	[
@@ -16,7 +18,9 @@ export const map = new Map([
 			yaw: 0,
 			pitch: 0,
 			roll: 0,
-			scale: 1150
+			scale: 1150,
+			width: 50,
+			height: 50
 		}
 	],
 	[
@@ -26,7 +30,9 @@ export const map = new Map([
 			yaw: 0,
 			pitch: 0,
 			roll: 0,
-			scale: 1150
+			scale: 1150,
+			width: 50,
+			height: 50
 		}
 	],
 	[
@@ -36,7 +42,9 @@ export const map = new Map([
 			yaw: 0,
 			pitch: 0,
 			roll: 0,
-			scale: 1150
+			scale: 1150,
+			width: 50,
+			height: 50
 		}
 	],
 	[
@@ -52,14 +60,16 @@ export const map = new Map([
 		}
 	],
 	[
-		('nepal',
+		'nepal',
 		{
 			file: '/topo/gadm36_IND_1.json',
 			yaw: 0,
 			pitch: 0,
 			roll: 0,
-			scale: 1150
-		})
+			scale: 1150,
+			width: 50,
+			height: 50
+		}
 	],
 	[
 		'france',
@@ -68,7 +78,9 @@ export const map = new Map([
 			yaw: 0,
 			pitch: 0,
 			roll: 0,
-			scale: 1150
+			scale: 1150,
+			width: 50,
+			height: 50
 		}
 	],
 	[
@@ -78,7 +90,9 @@ export const map = new Map([
 			yaw: 0,
 			pitch: 0,
 			roll: 0,
-			scale: 1150
+			scale: 1150,
+			width: 50,
+			height: 50
 		}
 	],
 	[
@@ -88,7 +102,9 @@ export const map = new Map([
 			yaw: 0,
 			pitch: 0,
 			roll: 0,
-			scale: 1150
+			scale: 1150,
+			width: 50,
+			height: 50
 		}
 	],
 	[
@@ -98,7 +114,9 @@ export const map = new Map([
 			yaw: 0,
 			pitch: 0,
 			roll: 0,
-			scale: 1150
+			scale: 1150,
+			width: 50,
+			height: 50
 		}
 	],
 	[
@@ -108,7 +126,9 @@ export const map = new Map([
 			yaw: 0,
 			pitch: 0,
 			roll: 0,
-			scale: 1150
+			scale: 1150,
+			width: 50,
+			height: 50
 		}
 	]
 ])

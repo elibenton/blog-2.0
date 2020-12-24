@@ -3,11 +3,13 @@ import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import moment from 'moment'
+import cache from 'memory-cache'
 
 // Component Imports
-import Entry from '../components/entry'
-import WorldMap from '../components/world-map'
-import SimpleNav from '../components/layout/simple-nav'
+import Entry from '../../components/entry'
+import WorldMap from '../../components/world-map'
+import SimpleNav from '../../components/layout/simple-nav'
 
 export default function PlaceIndex({ postData }) {
 	return (
@@ -28,7 +30,7 @@ export default function PlaceIndex({ postData }) {
 						<Entry
 							title={title}
 							link={slug}
-							dates={date}
+							dates={moment(JSON.parse(date)).format('MMMM DD, YYYY')}
 							locations={location}
 							country={country}
 						/>
@@ -43,25 +45,47 @@ const root = process.cwd()
 
 export async function getStaticProps() {
 	const contentRoot = path.join(root, 'posts')
+	const API_KEY = process.env.GOOGLE_API_KEY
 
 	const postData = await Promise.all(
 		fs.readdirSync(contentRoot).map(async p => {
 			const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
 			const frontmatter = matter(content).data
 
-			const res = await fetch(
-				`https://maps.googleapis.com/maps/api/geocode/json?address=${frontmatter.location}&key=AIzaSyBNwpvFZDye2gMprVqJvGgT4uoN6cdW5jo`
-			)
-
-			const coords = await res.json()
-
 			return {
 				...frontmatter,
 				slug: p.replace(/\.mdx/, ''),
-				coords: coords.results[0].geometry.location
+				date: JSON.stringify(frontmatter.date),
+				coords: await checkCache(frontmatter.location)
 			}
 		})
 	)
 
 	return { props: { postData } }
+}
+
+function checkCache(key) {
+	if (cache.get(key)) {
+		console.log(cache.get(key))
+
+		return cache.get(key)
+	} else {
+		const value = callAPI(key)
+		cache.put(key, value)
+
+		console.log(cache.get(key))
+
+		return value
+	}
+}
+
+async function callAPI(location) {
+	const res = await fetch(
+		`https://maps.googleapis.com` +
+			`/maps/api/geocode/json?` +
+			`address=${location}&` +
+			`key=${process.env.GOOGLE_API_KEY}`
+	)
+
+	return await res.json()
 }

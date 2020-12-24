@@ -33,16 +33,15 @@ const components = {
 
 export default function PostPage({
 	source,
-	frontMatter: {
-		title,
-		date,
-		location,
-		description,
-		country,
-		template,
-		readingTime: { minutes, words }
-	}
+	title,
+	date,
+	location,
+	description,
+	country,
+	template,
+	readingTime: { minutes, words }
 }) {
+	const dateParsed = moment(JSON.parse(date)).format('MMMM DD, YYYY')
 	const content = hydrate(source, { components })
 	return (
 		<>
@@ -51,7 +50,7 @@ export default function PostPage({
 				<meta property='og:title' content={title} />
 				<meta property='og:type' content='article' />
 			</Head>
-			<Nav title={title} date={date} location={location} />
+			<Nav title={title} date={dateParsed} location={location} />
 			<div className='flex flex-col sm:flex-row justify-between space-y-4'>
 				<div className='lg:ml-8'>
 					<h1 className='font-akzidenz text-4xl md:text-7xl max-w-3xl leading-none '>
@@ -63,11 +62,7 @@ export default function PostPage({
 				</div>
 				<div className='self-start sm:self-center lg:mr-16'>
 					<ul className='border-l-2 border-black'>
-						{date && (
-							<li className='pl-4'>
-								{moment(date).format('MMMM DD, YYYY')}
-							</li>
-						)}
+						{dateParsed && <li className='pl-4'>{dateParsed}</li>}
 						{location && (
 							<li className='pl-4'>
 								{location},&nbsp;
@@ -106,18 +101,15 @@ export const getStaticProps = async ({ params }) => {
 				require('smartypants')
 			],
 			rehypePlugins: [require('mdx-prism')]
-		},
-		scope: data
+		}
 	})
 
 	return {
 		props: {
-			source: mdxSource,
-			frontMatter: {
-				wordCount: content.split(/\s+/gu).length,
-				readingTime: readingTime(content),
-				...data
-			}
+			...data,
+			date: JSON.stringify(data.date), // moment(data.date).format('MMMM DD, YYYY'),
+			readingTime: readingTime(content),
+			source: mdxSource
 		}
 	}
 }

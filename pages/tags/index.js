@@ -8,7 +8,7 @@ import path from 'path'
 import matter from 'gray-matter'
 
 //Component Imports
-import SimpleNav from '../components/layout/simple-nav'
+import SimpleNav from '../../components/layout/simple-nav'
 
 export default function Portfolio({ tagsUniq }) {
 	return (
