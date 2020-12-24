@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://elibenton.co/404</loc>
+  </url>
+
+  <url>
     <loc>https://elibenton.co/about</loc>
   </url>
 
@@ -17,10 +21,6 @@
   </url>
 
   <url>
-    <loc>https://elibenton.co/photos</loc>
-  </url>
-
-  <url>
     <loc>https://elibenton.co/player</loc>
   </url>
 
@@ -33,11 +33,19 @@
   </url>
 
   <url>
+    <loc>https://elibenton.co/search</loc>
+  </url>
+
+  <url>
     <loc>https://elibenton.co/blog/[slug]</loc>
   </url>
 
   <url>
     <loc>https://elibenton.co/photos/[photo]</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/photos/index</loc>
   </url>
 
   <url>

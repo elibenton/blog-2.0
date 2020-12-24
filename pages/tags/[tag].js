@@ -21,7 +21,7 @@ export default function Portfolio({ filteredList, params }) {
 					<Entry
 						title={title}
 						link={slug}
-						dates={moment(JSON.parse(date)).format('MMMM DD, YYYY')}
+						dates={moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
 						locations={location}
 					/>
 				))}

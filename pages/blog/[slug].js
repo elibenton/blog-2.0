@@ -1,56 +1,49 @@
 // Default Imports
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 
 // Package Imports
-import fs from 'fs'
-import matter from 'gray-matter'
 import hydrate from 'next-mdx-remote/hydrate'
-import renderToString from 'next-mdx-remote/render-to-string'
 import _ from 'lodash'
-import path from 'path'
 import readingTime from 'reading-time'
 import moment from 'moment'
 
 // Component Imports
 import Nav from '../../components/layout/post-nav'
+import BlogSEO from '../../components/blog-seo'
 
-// Utililty Imports
-import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
+// Utility Imports
+import { getFilePaths, getFileBySlug } from '../../utils/mdx'
 
-// Custom components/renderers to pass to MDX.
-// Since the MDX files aren't loaded by webpack, they have no knowledge of how
-// to handle import statements. Instead, you must include components in scope
-// here.
 const components = {
-	// It also works with dynamically-imported components, which is especially
-	// useful for conditionally loading components for certain routes.
-	// See the notes in README.md for more details.
 	Image: dynamic(() => import('../../components/image')),
 	Citation: dynamic(() => import('../../components/citation/citation')),
 	Subscribe: dynamic(() => import('../../components/subscribe-big'))
 }
 
-export default function PostPage({
-	source,
-	title,
-	date,
-	location,
-	description,
-	country,
-	template,
-	readingTime: { minutes, words }
-}) {
-	const dateParsed = moment(JSON.parse(date)).format('MMMM DD, YYYY')
-	const content = hydrate(source, { components })
+const editUrl = slug =>
+	`https://github.com/elibenton/blog-2.0/tree/master/posts/${slug}.mdx`
+
+export default function PostPage({ mdxSource, frontMatter }) {
+	const {
+		slug,
+		title,
+		date,
+		location,
+		description,
+		country,
+		template,
+		readingTime: { minutes, words }
+	} = frontMatter
+
+	const content = hydrate(mdxSource, { components })
 	return (
 		<>
-			<Head>
-				<title>{title} | Blog</title>
-				<meta property='og:title' content={title} />
-				<meta property='og:type' content='article' />
-			</Head>
-			<Nav title={title} date={dateParsed} location={location} />
+			<BlogSEO {...frontMatter} />
+			<Nav
+				title={title}
+				date={moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
+				location={location}
+			/>
 			<div className='flex flex-col sm:flex-row justify-between space-y-4'>
 				<div className='lg:ml-8'>
 					<h1 className='font-akzidenz text-4xl md:text-7xl max-w-3xl leading-none '>
@@ -62,7 +55,11 @@ export default function PostPage({
 				</div>
 				<div className='self-start sm:self-center lg:mr-16'>
 					<ul className='border-l-2 border-black'>
-						{dateParsed && <li className='pl-4'>{dateParsed}</li>}
+						{date && (
+							<li className='pl-4'>
+								{moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
+							</li>
+						)}
 						{location && (
 							<li className='pl-4'>
 								{location},&nbsp;
@@ -80,47 +77,31 @@ export default function PostPage({
 			</div>
 			<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-16'>
 				<main>{content}</main>
+				<a href={editUrl(slug)} className='font-bold'>
+					Edit on Github
+				</a>
 			</div>
 		</>
 	)
 }
 
-export const getStaticProps = async ({ params }) => {
-	const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
-	const source = fs.readFileSync(postFilePath)
-
-	const { content, data } = matter(source)
-
-	const mdxSource = await renderToString(content, {
-		components,
-		mdxOptions: {
-			remarkPlugins: [
-				require('remark-autolink-headings'),
-				require('remark-slug'),
-				require('remark-code-titles'),
-				require('smartypants')
-			],
-			rehypePlugins: [require('mdx-prism')]
-		}
-	})
+export async function getStaticProps({ params }) {
+	const post = await getFileBySlug('posts', params.slug)
 
 	return {
-		props: {
-			...data,
-			date: JSON.stringify(data.date), // moment(data.date).format('MMMM DD, YYYY'),
-			readingTime: readingTime(content),
-			source: mdxSource
-		}
+		props: post
 	}
 }
 
-export const getStaticPaths = async () => {
-	const paths = postFilePaths
-		.map(path => path.replace(/\.mdx?$/, ''))
-		.map(slug => ({ params: { slug } }))
+export async function getStaticPaths() {
+	const posts = await getFilePaths('posts')
 
 	return {
-		paths,
+		paths: posts.map(p => ({
+			params: {
+				slug: p.replace(/\.mdx/, '')
+			}
+		})),
 		fallback: false
 	}
 }

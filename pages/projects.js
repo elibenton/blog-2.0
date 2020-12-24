@@ -17,7 +17,7 @@ export default function Projects() {
 								alt='Watson Logo'
 								width={100}
 								height={100}
-								quality={100}
+								quality={50}
 								priority={true}
 							/>
 							<div className='flex flex-col'>

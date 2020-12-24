@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import moment from 'moment'
 
 export default function Nav({ title, location, date }) {
 	const [mounted, setMounted] = useState(false)
@@ -40,9 +39,7 @@ export default function Nav({ title, location, date }) {
 						{title}
 					</p>
 					<div className='hidden sm:flex flex-col align-middle'>
-						<p className='text-sm my-0'>
-							{moment(date).format('MMMM DD, YYYY')}
-						</p>
+						<p className='text-sm my-0'>{date}</p>
 						<p className='text-sm my-0'>{location}</p>
 					</div>
 				</li>

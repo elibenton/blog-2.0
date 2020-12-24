@@ -38,8 +38,8 @@ const WorldMap = ({ coordinates, country }) => {
 					))
 				}
 			</Geographies>
-			{coordinates.map(coord => (
-				<Marker coordinates={[coord.lng, coord.lat]}>
+			{coordinates.map(({ lat, lng }) => (
+				<Marker coordinates={[lng, lat]}>
 					<circle r={7} fill='#F53' stroke='black' strokeWidth={0.5} />
 				</Marker>
 			))}
