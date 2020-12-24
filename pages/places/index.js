@@ -41,14 +41,9 @@ export default function PlaceIndex({ postData }) {
 	)
 }
 
-const root = process.cwd()
-
 export async function getStaticProps() {
-	const contentRoot = path.join(root, 'posts')
-	const API_KEY = process.env.GOOGLE_API_KEY
-
 	const postData = await Promise.all(
-		fs.readdirSync(contentRoot).map(async p => {
+		fs.readdirSync(path.join(process.cwd(), 'posts')).map(async p => {
 			const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
 			const frontmatter = matter(content).data
 
@@ -66,15 +61,10 @@ export async function getStaticProps() {
 
 function checkCache(key) {
 	if (cache.get(key)) {
-		console.log(cache.get(key))
-
 		return cache.get(key)
 	} else {
 		const value = callAPI(key)
 		cache.put(key, value)
-
-		console.log(cache.get(key))
-
 		return value
 	}
 }

@@ -12,8 +12,6 @@ import WorldMap from '../../components/world-map'
 import SimpleNav from '../../components/layout/simple-nav'
 
 export default function Portfolio({ filteredList, params }) {
-	filteredList.map(({ coords }) => console.log(coords))
-
 	return (
 		<>
 			<SimpleNav />
@@ -45,11 +43,8 @@ export default function Portfolio({ filteredList, params }) {
 	)
 }
 
-const root = process.cwd()
-
 export async function getStaticProps({ params }) {
-	const API_KEY = process.env.GOOGLE_API_KEY
-	const contentRoot = path.join(root, 'posts')
+	const contentRoot = path.join(process.cwd(), 'posts')
 
 	const postData = await Promise.all(
 		fs.readdirSync(contentRoot).map(async p => {
@@ -69,11 +64,11 @@ export async function getStaticProps({ params }) {
 		post => _.kebabCase(post.country) === params.place
 	)
 
-	return { props: { filteredList, params }, revalidate: 180 }
+	return { props: { filteredList, params } }
 }
 
 export async function getStaticPaths() {
-	const contentRoot = path.join(root, 'posts')
+	const contentRoot = path.join(process.cwd(), 'posts')
 
 	const places = fs.readdirSync(contentRoot).map(p => {
 		const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
@@ -96,15 +91,10 @@ export async function getStaticPaths() {
 
 function checkCache(key) {
 	if (cache.get(key)) {
-		console.log(cache.get(key))
-
 		return cache.get(key)
 	} else {
 		const value = callAPI(key)
 		cache.put(key, value)
-
-		console.log(cache.get(key))
-
 		return value
 	}
 }
