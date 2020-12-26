@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 
 // Package Imports
 import _ from 'lodash'
@@ -9,8 +10,7 @@ import moment from 'moment'
 import cache from 'memory-cache'
 
 // Component Imports
-import Entry from '../components/entry'
-import SimpleNav from '../components/layout/simple-nav'
+import SearchEntry from '../components/search-entry'
 
 export default function PlaceIndex({ postData }) {
 	const [searchValue, setSearchValue] = useState('')
@@ -18,11 +18,16 @@ export default function PlaceIndex({ postData }) {
 		.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
 		.filter(
 			frontmatter =>
-				frontmatter.title.toLowerCase().includes(searchValue.toLowerCase()) // CAN ALSO BE USED WITH DESCRIPTION
+				frontmatter.title
+					.toLowerCase()
+					.includes(searchValue.toLowerCase()) ||
+				frontmatter.description
+					.toLowerCase()
+					.includes(searchValue.toLowerCase()) // CAN ALSO BE USED WITH DESCRIPTION
 		)
 
 	return (
-		<>
+		<div>
 			<div className='flex flex-row mb-8 sm:mb-20 border-b-2 dark:border-white border-black sticky top-0 z-10 items-center bg-gray-100'>
 				<input
 					aria-label='Search articles'
@@ -45,18 +50,35 @@ export default function PlaceIndex({ postData }) {
 					/>
 				</svg>
 			</div>
-
-			{!filteredBlogPosts.length && 'No posts found.'}
-			{filteredBlogPosts.map(({ title, slug, date, location, country }) => (
-				<Entry
-					title={title}
-					link={slug}
-					dates={moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
-					locations={location}
-					country={country}
-				/>
-			))}
-		</>
+			<div className='flex flex-row'>
+				<div>
+					{!filteredBlogPosts.length && 'No posts found.'}
+					{filteredBlogPosts.map(frontmatter => (
+						<SearchEntry
+							{...frontmatter}
+							date={moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
+						/>
+					))}
+				</div>
+				<aside className='hidden lg:flex flex-row flex-wrap sticky-top self-start px-4 top-24 gap-4'>
+					<Link href='/about'>
+						<a className='bg-gray-200 rounded p-3 hover:bg-gray-400 duration-200 dark:bg-black dark:text-white dark:hover:bg-gray-700'>
+							Place
+						</a>
+					</Link>
+					<Link href='/about'>
+						<a className='bg-gray-200 rounded p-3 hover:bg-gray-400 duration-200 dark:bg-black dark:text-white dark:hover:bg-gray-700'>
+							Tag
+						</a>
+					</Link>
+					<Link href='/about'>
+						<a className='bg-gray-200 rounded p-3 hover:bg-gray-400 duration-200 dark:bg-black dark:text-white dark:hover:bg-gray-700'>
+							Date
+						</a>
+					</Link>
+				</aside>
+			</div>
+		</div>
 	)
 }
 

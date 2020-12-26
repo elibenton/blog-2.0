@@ -41,6 +41,14 @@
   </url>
 
   <url>
+    <loc>https://elibenton.co/books/[book]</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/books/index</loc>
+  </url>
+
+  <url>
     <loc>https://elibenton.co/photos/[photo]</loc>
   </url>
 

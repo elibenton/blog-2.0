@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import _ from 'lodash'
 
-export default function Entry({ title, dates, locations, country, link }) {
+export default function Entry({ title, date, locations, country, link, type }) {
 	return (
 		<>
 			<div className='hidden sm:block group mb-2 max-w-5xl'>
@@ -18,11 +18,11 @@ export default function Entry({ title, dates, locations, country, link }) {
 					</Link>
 					<span className='hidden group-hover:italic sm:inline-flex flex-col align-top font-normal text-sm ml-2 relative'>
 						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200  border border-yellow-400 border-opacity-0 hover:border-opacity-100'>
-							{dates}
+							{date}
 						</a>
 						<Link href={`/places/${_.kebabCase(country)}`}>
 							<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200  border border-yellow-400 border-opacity-0 hover:border-opacity-100'>
-								{locations}
+								{_.upperFirst(type)}
 							</a>
 						</Link>
 					</span>
@@ -32,7 +32,7 @@ export default function Entry({ title, dates, locations, country, link }) {
 				<a className='font-bold sm:hidden text-1xl pb-0 pt-2'>{title}</a>
 			</Link>
 			<div className='sm:hidden flex flex-row pb-4'>
-				<div>{dates}</div>&nbsp;•&nbsp;
+				<div>{date}</div>&nbsp;•&nbsp;
 				<Link href={`/places/${_.kebabCase(country)}`}>
 					<a>{locations}</a>
 				</Link>

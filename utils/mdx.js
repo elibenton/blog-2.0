@@ -77,7 +77,7 @@ export async function getFileBySlug(type, slug) {
 	}
 }
 
-// HELPER FUCTIONS - Not for export
+// HELPER FUNCTIONS - Not for export
 function checkCache(key) {
 	if (cache.get(key)) {
 		// console.log('CACHE: ', cache.get(key))

@@ -31,7 +31,7 @@ export default function PostPage({ mdxSource, frontMatter }) {
 		location,
 		description,
 		country,
-		template,
+		type,
 		readingTime: { minutes, words }
 	} = frontMatter
 
@@ -67,9 +67,9 @@ export default function PostPage({ mdxSource, frontMatter }) {
 							</li>
 						)}
 						<li className='pl-4'>
-							{template && _.upperFirst(template)}
+							{type && _.upperFirst(type)}
 							{readingTime &&
-								template !== 'audio' &&
+								type !== 'audio' &&
 								` • ${_.ceil(minutes * 1.2)} minutes • ${words} words`}
 						</li>
 					</ul>

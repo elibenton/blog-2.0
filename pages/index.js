@@ -6,7 +6,7 @@ import Intro from '../components/intro'
 import Section from '../components/section'
 import Entry from '../components/entry'
 
-// Utilility Imports
+// Utility Imports
 import { getAllFilesFrontMatter, groupPostsByDate } from '../utils/mdx'
 
 export default function Portfolio({ groupedPosts }) {
@@ -21,19 +21,15 @@ export default function Portfolio({ groupedPosts }) {
 								{entry
 									.slice(1, 2)
 									.map(article =>
-										article.map(
-											({ slug, title, location, date, country }) => (
-												<Entry
-													title={title}
-													link={slug}
-													dates={moment(date, 'YYYY-MM-DD').format(
-														'MMMM DD, YYYY'
-													)}
-													locations={location}
-													country={country}
-												/>
-											)
-										)
+										article.map(frontmatter => (
+											<Entry
+												{...frontmatter}
+												date={moment(
+													frontmatter.date,
+													'YYYY-MM-DD'
+												).format('MMM D, YYYY')}
+											/>
+										))
 									)}
 							</Section>
 						))
