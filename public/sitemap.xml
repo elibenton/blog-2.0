@@ -41,7 +41,7 @@
   </url>
 
   <url>
-    <loc>https://elibenton.co/books/[book]</loc>
+    <loc>https://elibenton.co/books/[slug]</loc>
   </url>
 
   <url>

@@ -26,14 +26,10 @@ export default function ImageGrid({ photosInfo }) {
 								{image.path.split(' - ')[1].split('.')[0]}
 							</p>
 							<img
+								loading='lazy'
 								className='object-cover sm:h-80 flex-grow group-hover:opacity-50 group-hover:duration-200'
 								src={image.path}
 							/>
-							{/* <Image
-				className='absolute object-contain sm:h-80 flex-grow'
-				layout='fill'
-				src={image}
-				/> */}
 						</a>
 					</Link>
 				))}

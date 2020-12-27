@@ -8,22 +8,27 @@ import moment from 'moment'
 import cache from 'memory-cache'
 import readingTime from 'reading-time'
 import renderToString from 'next-mdx-remote/render-to-string'
+import glob from 'globby'
 
 const root = process.cwd()
 
 export async function getFilePaths(type) {
-	return fs.readdirSync(path.join(root, type))
+	return fs.readdirSync(path.join(root, 'posts', type))
 }
 
 // Add argument for multiple "post types" (Blog and Newsletter)
 export async function getAllFilesFrontMatter(type) {
+	console.log(await glob(`${path.join(root, 'posts')}/**/*`))
+
+	const allPosts = await glob(`${path.join(root, 'posts')}/**/*`)
+
 	return await Promise.all(
-		fs.readdirSync(path.join(root, type)).map(async postSlug => {
-			const source = fs.readFileSync(
-				path.join(path.join(root), type, postSlug),
-				'utf8'
-			)
-			const { data } = matter(source)
+		allPosts.map(async postSlug => {
+			// const source = fs.readFileSync(
+			// 	path.join(path.join(root), type, postSlug),
+			// 	'utf8'
+			// )
+			const { data } = matter(fs.readFileSync(postSlug))
 
 			return {
 				...data,
@@ -48,7 +53,10 @@ export function groupPostsByDate(posts) {
 }
 
 export async function getFileBySlug(type, slug) {
-	const source = fs.readFileSync(path.join(root, type, `${slug}.mdx`), 'utf8')
+	const source = fs.readFileSync(
+		path.join(root, 'posts', type, `${slug}.mdx`),
+		'utf8'
+	)
 	const { data, content } = matter(source)
 	const mdxSource = await renderToString(content, {
 		components: {
