@@ -1,8 +1,8 @@
 export default async (_, res) => {
 	const API_KEY = process.env.BUTTONDOWN_API_KEY
 
-	const responseSubs = await fetch(
-		'https://api.buttondown.email/v1/subscribers',
+	const responseIssues = await fetch(
+		'https://api.buttondown.email/v1/newsletters',
 		{
 			headers: {
 				'Authorization': `Token ${API_KEY}`,
@@ -12,12 +12,12 @@ export default async (_, res) => {
 		}
 	)
 
-	const { count: countSubs } = await responseSubs.json()
+	const { count: countIssues } = await responseIssues.json()
 
 	res.setHeader(
 		'Cache-Control',
 		'public, s-maxage=1200, stale-while-revalidate=600'
 	)
 
-	return res.status(200).json({ countSubs })
+	return res.status(200).json({ countIssues })
 }

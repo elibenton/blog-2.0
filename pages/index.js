@@ -1,5 +1,6 @@
 // Package Imports
 import moment from 'moment'
+import fs from 'fs'
 
 // Component Imports
 import Intro from '../components/intro'
@@ -7,6 +8,7 @@ import Section from '../components/section'
 import Entry from '../components/entry'
 
 // Utility Imports
+import { generateRss } from '../utils/rss'
 import { getAllFilesFrontMatter, groupPostsByDate } from '../utils/mdx'
 
 export default function Portfolio({ groupedPosts }) {
@@ -58,6 +60,9 @@ export default function Portfolio({ groupedPosts }) {
 export async function getStaticProps() {
 	const posts = await getAllFilesFrontMatter('posts') // Add argument for multiple "post types" (Blog and Newsletter)
 	const groupedPosts = groupPostsByDate(posts)
+
+	const rss = generateRss(posts)
+	fs.writeFileSync('./public/rss.xml', rss)
 
 	return { props: { groupedPosts } }
 }

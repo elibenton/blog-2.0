@@ -50,6 +50,12 @@ class MyDocument extends Document {
 						content='/static/favicons/browserconfig.xml'
 						name='msapplication-config'
 					/>
+					<link
+						rel='alternate'
+						type='application/rss+xml'
+						title='RSS feed for blog posts'
+						href='https://emilioschepis.com/rss.xml'
+					/>
 				</Head>
 				<body className='bg-gray-100 dark:bg-black dark:text-gray-100 mx-3 sm:mx-8'>
 					<Main />

@@ -37,6 +37,10 @@
   </url>
 
   <url>
+    <loc>https://elibenton.co/blog/[slug]</loc>
+  </url>
+
+  <url>
     <loc>https://elibenton.co/books/[slug]</loc>
   </url>
 
@@ -66,9 +70,5 @@
 
   <url>
     <loc>https://elibenton.co/tags/index</loc>
-  </url>
-
-  <url>
-    <loc>https://elibenton.co/blog/[slug]</loc>
   </url>
 </urlset>

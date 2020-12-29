@@ -1,17 +1,17 @@
 import Link from 'next/link'
 import _ from 'lodash'
 
-export default function Entry({ title, date, location, country, link, type }) {
+export default function Entry({ title, date, location, country, type, slug }) {
 	return (
 		<>
 			<div className='hidden sm:block group my-2 max-w-5xl'>
-				<Link href='/blog/[link]' as={`/blog/${link}`}>
+				<Link href={`/${type}/${slug}`}>
 					<a className='font-bold sm:font-normal text-2xl sm:text-3xl lg:text-5xl text-left group-hover:underline font-akzidenz leading-tight sm:leading-none mb-2'>
 						{title.split(' ').slice(0, -1).join(' ')}&nbsp;
 					</a>
 				</Link>
 				<span className='flex flex-col sm:inline-flex sm:flex-row'>
-					<Link href='/blog/[link]' as={`/blog/${link}`}>
+					<Link href={`/${type}/${slug}`}>
 						<a className='font-bold sm:font-normal text-2xl sm:text-3xl lg:text-5xl text-left group-hover:underline font-akzidenz leading-tight sm:leading-none mb-2'>
 							{title.split(' ').slice(-1).join(' ')}
 						</a>
@@ -29,7 +29,7 @@ export default function Entry({ title, date, location, country, link, type }) {
 					</span>
 				</span>
 			</div>
-			<Link href='/blog/[link]' as={`/blog/${link}`}>
+			<Link href={`/${type}/${slug}`}>
 				<a className='font-bold sm:hidden text-1xl pb-0 pt-2'>{title}</a>
 			</Link>
 			<div className='sm:hidden flex flex-row pb-4'>

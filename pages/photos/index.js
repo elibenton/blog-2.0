@@ -5,7 +5,7 @@ import Image from 'next/image'
 // Package Import
 import path from 'path'
 import mapFolder from 'map-folder'
-import exifr from 'exifr' // MUST BE USED TO NOT ERROR
+// import exifr from 'exifr' // MUST BE USED TO NOT ERROR
 import moment from 'moment'
 
 // Component Imports
@@ -58,21 +58,21 @@ export async function getStaticProps() {
 	const folderMap = mapFolder(photosRoot)
 	const photosInfo = await Promise.all(
 		Object.entries(folderMap.entries).map(async d => {
-			const imageData = await exifr.parse(
-				path.join(photosRoot, `/${d[0]}`),
-				['ISO', 'FNumber', 'DateTimeOriginal']
-			)
+			// const imageData = await exifr.parse(
+			// 	path.join(photosRoot, `/${d[0]}`),
+			// 	['ISO', 'FNumber', 'DateTimeOriginal']
+			// )
 
 			return {
-				ISO: imageData.ISO && imageData.ISO,
-				FNumber: imageData.FNumber && imageData.FNumber,
-				Date:
-					imageData.DateTimeOriginal &&
-					moment(imageData.DateTimeOriginal).format('YYYY-MM-DD'),
+				// ISO: imageData.ISO && imageData.ISO,
+				// FNumber: imageData.FNumber && imageData.FNumber,
+				// Date:
+				// 	imageData.DateTimeOriginal &&
+				// 	moment(imageData.DateTimeOriginal).format('YYYY-MM-DD'),
 				path: `/photos/${d[0]}`
 			}
 		})
 	)
-	console.log(photosInfo)
+	// console.log(photosInfo)
 	return { props: { photosInfo } }
 }

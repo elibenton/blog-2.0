@@ -47,7 +47,10 @@ export default function Subscribe() {
 	const [form, setForm] = useState(false)
 	const inputEl = useRef(null)
 	const { data } = useSWR('/api/subscribers', fetcher)
-	const subscriberCount = format(data?.count)
+	const subscriberCount = format(data?.countSubs)
+	const issuesCount = format(data?.countIssues)
+
+	console.log(data)
 
 	const subscribe = async e => {
 		e.preventDefault()
@@ -144,7 +147,7 @@ export default function Subscribe() {
 				<p className='text-sm text-gray-800 dark:text-gray-200'>
 					{`${subscriberCount || '-'} subscribers – `}
 					<Link href='/newsletter'>
-						<a>24 issues</a>
+						<a>{issuesCount} issues</a>
 					</Link>
 				</p>
 			)}
