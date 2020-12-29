@@ -18,7 +18,20 @@ export default function ImageGrid({ photosInfo }) {
 			<h1 className='text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8'>
 				Photos
 			</h1>
-			<div className='flex flex-row flex-wrap gap-y-4 sm:gap-1 overflow-hidden mt-20'>
+			<ul className='flex flex-row flex-wrap'>
+				{photosInfo.map(image => (
+					<li className='flex-grow'>
+						<Image
+							className='object-contain max-w-full max-h-full align-bottom'
+							src={image.path}
+							layout='intrinsic'
+							width={400}
+							height={400}
+						/>
+					</li>
+				))}
+			</ul>
+			{/* <div className='flex flex-row flex-wrap gap-y-4 sm:gap-1 overflow-hidden mt-20'>
 				{photosInfo.map(image => (
 					<Link href='/'>
 						<a className='group relative flex flex-grow' href='/'>
@@ -33,7 +46,7 @@ export default function ImageGrid({ photosInfo }) {
 						</a>
 					</Link>
 				))}
-			</div>
+			</div> */}
 		</>
 	)
 }

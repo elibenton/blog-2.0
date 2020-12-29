@@ -51,7 +51,7 @@ export default function PostPage({ source, frontmatter }) {
 				location={location}
 			/>
 			<div className='flex flex-col sm:flex-row justify-between space-y-4'>
-				<div className='lg:ml-8'>
+				<div className='lg:ml-8 w-3/4'>
 					<h1 className='font-akzidenz text-4xl md:text-7xl max-w-3xl leading-none '>
 						{title}
 					</h1>
@@ -59,8 +59,8 @@ export default function PostPage({ source, frontmatter }) {
 						<p className='italic text-lg max-w-3xl'>{description}</p>
 					)}
 				</div>
-				<div className='self-start sm:self-center lg:mr-16'>
-					<ul className='border-l-2 border-black'>
+				<div className='self-start sm:self-center lg:mr-16 w-1/4'>
+					{/* <ul className='border-l-2 border-black'>
 						{date && (
 							<li className='pl-4'>
 								{moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
@@ -83,10 +83,24 @@ export default function PostPage({ source, frontmatter }) {
 								Buy from your local bookstore (affiliate link)
 							</a>
 						</li>
-					</ul>
+					</ul> */}
+					<div className='border-2 border-black h-auto p-4'>
+						<h3>Buy From Bookshop</h3>
+						<p className='text-gray-700 text-sm mb-4'>
+							Bookshop is an online bookstore that supports local,
+							independent shops. A great alternative to Amazon, they
+							gives 75% of their profits away. They also give 10% to me!
+							(This is an affiliate link)
+						</p>
+						<a href={affiliateLink} target='_blank'>
+							<button className='bg-black text-white p-2 rounded duration-200'>
+								Purchase
+							</button>
+						</a>
+					</div>
 				</div>
 			</div>
-			<h1>What the professionals say</h1>
+			{/* <h1>What the professionals say</h1>
 			<div
 				class='bm-reviews'
 				data-isbn={isbn.toString()}
@@ -95,12 +109,16 @@ export default function PostPage({ source, frontmatter }) {
 				data-count='100'
 				data-link='true'
 			/>
-			<script src='//lithub.com/b/v1/bookmarks.js?ver=1.3' />
+			<script src='//lithub.com/b/v1/bookmarks.js?ver=1.3' /> */}
 			<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-16'>
-				<main>{content}</main>
-				<a href={editUrl(slug)} className='font-bold'>
-					Edit on Github
-				</a>
+				<main className='border-b border-black pb-8 mb-4'>{content}</main>
+				<div className='text-right'>
+					See a typo? Help me fix it.
+					<br />
+					<a href={editUrl(slug)} className='font-bold'>
+						Edit on Github
+					</a>
+				</div>
 			</div>
 		</>
 	)
