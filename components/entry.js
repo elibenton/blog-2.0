@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import _ from 'lodash'
 
-export default function Entry({ title, date, locations, country, link, type }) {
+export default function Entry({ title, date, location, country, link, type }) {
 	return (
 		<>
-			<div className='hidden sm:block group mb-2 max-w-5xl'>
+			<div className='hidden sm:block group my-2 max-w-5xl'>
 				<Link href='/blog/[link]' as={`/blog/${link}`}>
 					<a className='font-bold sm:font-normal text-2xl sm:text-3xl lg:text-5xl text-left group-hover:underline font-akzidenz leading-tight sm:leading-none mb-2'>
 						{title.split(' ').slice(0, -1).join(' ')}&nbsp;
@@ -16,15 +16,16 @@ export default function Entry({ title, date, locations, country, link, type }) {
 							{title.split(' ').slice(-1).join(' ')}
 						</a>
 					</Link>
-					<span className='hidden group-hover:italic sm:inline-flex flex-col align-top font-normal text-sm ml-2 relative'>
-						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200  border border-yellow-400 border-opacity-0 hover:border-opacity-100'>
+					<span className='hidden group-hover:italic sm:inline-flex flex-col align-top font-normal text-sm ml-2 relative -mt-0.5'>
+						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
 							{date}
 						</a>
-						<Link href={`/places/${_.kebabCase(country)}`}>
-							<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200  border border-yellow-400 border-opacity-0 hover:border-opacity-100'>
-								{_.upperFirst(type)}
-							</a>
-						</Link>
+						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
+							{location}
+						</a>
+						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
+							{_.upperFirst(type)}
+						</a>
 					</span>
 				</span>
 			</div>
@@ -34,7 +35,7 @@ export default function Entry({ title, date, locations, country, link, type }) {
 			<div className='sm:hidden flex flex-row pb-4'>
 				<div>{date}</div>&nbsp;•&nbsp;
 				<Link href={`/places/${_.kebabCase(country)}`}>
-					<a>{locations}</a>
+					<a>{location}</a>
 				</Link>
 			</div>
 		</>

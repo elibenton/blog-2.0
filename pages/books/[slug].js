@@ -52,11 +52,11 @@ export default function PostPage({ source, frontmatter }) {
 			/>
 			<div className='flex flex-col sm:flex-row justify-between space-y-4'>
 				<div className='lg:ml-8 w-3/4'>
-					<h1 className='font-akzidenz text-4xl md:text-7xl max-w-3xl leading-none '>
+					<h1 className='font-akzidenz text-4xl md:text-8xl md:mt-8 max-w-3xl leading-none'>
 						{title}
 					</h1>
 					{description && (
-						<p className='italic text-lg max-w-3xl'>{description}</p>
+						<p className='text-lg max-w-3xl font-plex'>{description}</p>
 					)}
 				</div>
 				<div className='self-start sm:self-center lg:mr-16 w-1/4'>
@@ -85,7 +85,14 @@ export default function PostPage({ source, frontmatter }) {
 						</li>
 					</ul> */}
 					<div className='border-2 border-black h-auto p-4'>
-						<h3>Buy From Bookshop</h3>
+						<h3>{bookLinks.results.title[0]}</h3>
+						<h4>By {bookLinks.results.authors[0]}</h4>
+						<p className='text-gray-700 text-sm mb-4'>
+							View on{' '}
+							<a href={`https://www.worldcat.org/isbn/${isbn}`}>
+								World Cat
+							</a>
+						</p>
 						<p className='text-gray-700 text-sm mb-4'>
 							Bookshop is an online bookstore that supports local,
 							independent shops. A great alternative to Amazon, they
@@ -138,8 +145,8 @@ export async function getStaticProps({ params }) {
 			source: postProps.mdxSource,
 			frontmatter: {
 				...postProps.frontMatter,
+				bookLinks: bookLinks,
 				isbn: bookLinks.results.isbn13[0],
-				bookLinks: bookLinks.permalinks,
 				affiliateLink: `https://bookshop.org/a/${process.env.BOOKSHOP_AFFILIATE_ID}/${bookLinks.results.isbn13[0]}`
 			}
 		}

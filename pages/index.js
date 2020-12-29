@@ -27,7 +27,7 @@ export default function Portfolio({ groupedPosts }) {
 												date={moment(
 													frontmatter.date,
 													'YYYY-MM-DD'
-												).format('MMM D, YYYY')}
+												).format('MMMM D, YYYY')}
 											/>
 										))
 									)}
