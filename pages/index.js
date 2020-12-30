@@ -8,8 +8,8 @@ import Section from '../components/section'
 import Entry from '../components/entry'
 
 // Utility Imports
-import { generateRss } from '../utils/rss'
-import { getAllFilesFrontMatter, groupPostsByDate } from '../utils/mdx'
+import { generateRss } from '../lib/rss'
+import { getAllFilesFrontMatter, groupPostsByDate } from '../lib/mdx'
 
 export default function Portfolio({ groupedPosts }) {
 	return (

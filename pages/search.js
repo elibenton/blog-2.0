@@ -3,9 +3,7 @@ import Link from 'next/link'
 
 // Package Imports
 import _ from 'lodash'
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import { getAllFilesFrontMatter } from '../lib/mdx'
 import moment from 'moment'
 import cache from 'memory-cache'
 
@@ -56,7 +54,10 @@ export default function PlaceIndex({ postData }) {
 					{filteredBlogPosts.map(frontmatter => (
 						<SearchEntry
 							{...frontmatter}
-							date={moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
+							searchTerm={searchValue}
+							date={moment(postData.date, 'YYYY-MM-DD').format(
+								'MMMM DD, YYYY'
+							)}
 						/>
 					))}
 				</div>
@@ -83,43 +84,7 @@ export default function PlaceIndex({ postData }) {
 }
 
 export async function getStaticProps() {
-	const postData = await Promise.all(
-		fs.readdirSync(path.join(process.cwd(), 'posts')).map(async p => {
-			const content = fs.readFileSync(
-				path.join(path.join(process.cwd(), 'posts'), p),
-				'utf8'
-			)
-			const frontmatter = matter(content).data
-
-			return {
-				...frontmatter,
-				slug: p.replace(/\.mdx/, ''),
-				date: JSON.stringify(frontmatter.date),
-				coords: await checkCache(frontmatter.location)
-			}
-		})
-	)
+	const postData = await getAllFilesFrontMatter()
 
 	return { props: { postData } }
-}
-
-function checkCache(key) {
-	if (cache.get(key)) {
-		return cache.get(key)
-	} else {
-		const value = callAPI(key)
-		cache.put(key, value)
-		return value
-	}
-}
-
-async function callAPI(location) {
-	const res = await fetch(
-		`https://maps.googleapis.com` +
-			`/maps/api/geocode/json?` +
-			`address=${location}&` +
-			`key=${process.env.GOOGLE_API_KEY}`
-	)
-
-	return await res.json()
 }

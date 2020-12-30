@@ -6,6 +6,8 @@ import matter from 'gray-matter'
 import moment from 'moment'
 import cache from 'memory-cache'
 
+import { getAllFilesFrontMatter } from '../../lib/mdx'
+
 // Component Imports
 import Entry from '../../components/entry'
 import WorldMap from '../../components/world-map'
@@ -44,21 +46,7 @@ export default function Portfolio({ filteredList, params }) {
 }
 
 export async function getStaticProps({ params }) {
-	const contentRoot = path.join(process.cwd(), 'posts')
-
-	const postData = await Promise.all(
-		fs.readdirSync(contentRoot).map(async p => {
-			const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
-			const frontmatter = matter(content).data
-
-			return {
-				...frontmatter,
-				slug: p.replace(/\.mdx/, ''),
-				date: JSON.stringify(frontmatter.date),
-				coords: await checkCache(frontmatter.location)
-			}
-		})
-	)
+	const postData = await getAllFilesFrontMatter()
 
 	const filteredList = postData.filter(
 		post => _.kebabCase(post.country) === params.place

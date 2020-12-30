@@ -8,7 +8,7 @@ import {
 } from 'react-simple-maps'
 
 // Utility Imports
-import { map } from '../utils/country-maps'
+import { map } from '../lib/country-maps'
 
 const WorldMap = ({ coordinates, country }) => {
 	return (

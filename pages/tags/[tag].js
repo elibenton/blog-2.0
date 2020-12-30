@@ -8,6 +8,7 @@ import moment from 'moment'
 // Component Imports
 import Entry from '../../components/entry'
 import SimpleNav from '../../components/layout/simple-nav'
+import { getAllFilesFrontMatter } from '../../lib/mdx'
 
 export default function Portfolio({ filteredList, params }) {
 	return (
@@ -33,17 +34,7 @@ export default function Portfolio({ filteredList, params }) {
 const root = process.cwd()
 
 export async function getStaticProps({ params }) {
-	const contentRoot = path.join(root, 'posts')
-	const postData = fs.readdirSync(contentRoot).map(p => {
-		const content = fs.readFileSync(path.join(contentRoot, p), 'utf8')
-		const frontmatter = matter(content).data
-
-		return {
-			...frontmatter,
-			date: JSON.stringify(frontmatter.date),
-			slug: p.replace(/\.mdx/, '')
-		}
-	})
+	const postData = await getAllFilesFrontMatter()
 
 	const filteredList = postData.filter(post =>
 		post.tags.map(tag => _.kebabCase(tag)).includes(params.tag)

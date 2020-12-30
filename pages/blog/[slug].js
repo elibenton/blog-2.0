@@ -12,7 +12,7 @@ import Nav from '../../components/layout/post-nav'
 import BlogSEO from '../../components/blog-seo'
 
 // Utility Imports
-import { getFilePaths, getFileBySlug } from '../../utils/mdx'
+import { getFilePaths, getFileBySlug } from '../../lib/mdx'
 
 const components = {
 	Image: dynamic(() => import('../../components/image')),
@@ -86,7 +86,7 @@ export default function PostPage({ mdxSource, frontMatter }) {
 }
 
 export async function getStaticProps({ params }) {
-	const post = await getFileBySlug('posts', params.slug)
+	const post = await getFileBySlug(params.slug)
 
 	return {
 		props: post
@@ -94,12 +94,12 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-	const posts = await getFilePaths('posts')
+	const posts = await getFilePaths('blog')
 
 	return {
-		paths: posts.map(p => ({
+		paths: posts.map(({ slug }) => ({
 			params: {
-				slug: p.replace(/\.mdx/, '')
+				slug: slug
 			}
 		})),
 		fallback: false

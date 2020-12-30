@@ -13,7 +13,7 @@ import Nav from '../../components/layout/post-nav'
 import BlogSEO from '../../components/blog-seo'
 
 // Utility Imports
-import { getFilePaths, getFileBySlug } from '../../utils/mdx'
+import { getFilePaths, getFileBySlug } from '../../lib/mdx'
 
 const components = {
 	Image: dynamic(() => import('../../components/image')),
@@ -38,8 +38,6 @@ export default function PostPage({ source, frontmatter }) {
 		affiliateLink,
 		readingTime: { minutes, words }
 	} = frontmatter
-
-	console.log(bookLinks)
 
 	const content = hydrate(source, { components })
 	return (
@@ -132,13 +130,9 @@ export default function PostPage({ source, frontmatter }) {
 }
 
 export async function getStaticProps({ params }) {
-	const postProps = await getFileBySlug('books', params.slug)
+	const postProps = await getFileBySlug(params.slug)
 
-	const response = await fetch(
-		`https://api.bookish.tech/search?type=isbn&id=${postProps.frontMatter.isbn}`
-	)
-
-	const bookLinks = await response.json()
+	const bookLinks = await checkCache(postProps.frontMatter.isbn)
 
 	return {
 		props: {
@@ -154,12 +148,12 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-	const posts = await getFilePaths('books')
+	const posts = await getFilePaths('book')
 
 	return {
-		paths: posts.map(p => ({
+		paths: posts.map(({ slug }) => ({
 			params: {
-				slug: p.replace(/\.mdx/, '')
+				slug: slug
 			}
 		})),
 		fallback: false
@@ -168,12 +162,12 @@ export async function getStaticPaths() {
 
 function checkCache(key) {
 	if (cache.get(key)) {
-		console.log(cache.get(key))
+		// console.log(cache.get(key))
 		return cache.get(key)
 	} else {
 		const value = callAPI(key)
 		cache.put(key, value)
-		console.log(value)
+		// console.log(value)
 		return value
 	}
 }

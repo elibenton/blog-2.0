@@ -3,7 +3,7 @@ import Link from 'next/link'
 import useSWR from 'swr'
 import format from 'comma-number'
 
-import fetcher from '../utils/fetcher'
+import fetcher from '../lib/fetcher'
 
 function ErrorMessage({ children }) {
 	return (
@@ -50,7 +50,7 @@ export default function Subscribe() {
 	const subscriberCount = format(data?.countSubs)
 	const issuesCount = format(data?.countIssues)
 
-	console.log(data)
+	// console.log(data)
 
 	const subscribe = async e => {
 		e.preventDefault()

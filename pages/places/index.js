@@ -8,7 +8,7 @@ import WorldMap from '../../components/world-map'
 import SimpleNav from '../../components/layout/simple-nav'
 
 // Utility Imports
-import { getAllFilesFrontMatter } from '../../utils/mdx'
+import { getAllFilesFrontMatter } from '../../lib/mdx'
 
 export default function PlaceIndex({ posts }) {
 	return (

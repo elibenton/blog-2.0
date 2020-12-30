@@ -41,19 +41,11 @@
   </url>
 
   <url>
-    <loc>https://elibenton.co/books/[slug]</loc>
+    <loc>https://elibenton.co/book/[slug]</loc>
   </url>
 
   <url>
-    <loc>https://elibenton.co/books/index</loc>
-  </url>
-
-  <url>
-    <loc>https://elibenton.co/photos/[photo]</loc>
-  </url>
-
-  <url>
-    <loc>https://elibenton.co/photos/index</loc>
+    <loc>https://elibenton.co/book/index</loc>
   </url>
 
   <url>
@@ -62,6 +54,14 @@
 
   <url>
     <loc>https://elibenton.co/places/index</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/photos/[photo]</loc>
+  </url>
+
+  <url>
+    <loc>https://elibenton.co/photos/index</loc>
   </url>
 
   <url>

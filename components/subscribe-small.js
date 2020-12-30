@@ -3,7 +3,7 @@ import Link from 'next/link'
 import useSWR from 'swr'
 import format from 'comma-number'
 
-import fetcher from '../utils/fetcher'
+import fetcher from '../lib/fetcher'
 
 function ErrorMessage({ children }) {
 	return (
