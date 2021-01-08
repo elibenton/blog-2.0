@@ -3,8 +3,7 @@ import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import moment from 'moment'
-
+import { parseISO, format } from 'date-fns'
 // Component Imports
 import Entry from '../../components/entry'
 import SimpleNav from '../../components/layout/simple-nav'
@@ -18,13 +17,8 @@ export default function Portfolio({ filteredList, params }) {
 				<h1 className='text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8'>
 					{_.startCase(params.tag)}
 				</h1>
-				{filteredList.map(({ title, slug, date, location }) => (
-					<Entry
-						title={title}
-						link={slug}
-						dates={moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
-						locations={location}
-					/>
+				{filteredList.map(post => (
+					<Entry {...post} />
 				))}
 			</div>
 		</>

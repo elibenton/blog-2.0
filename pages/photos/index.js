@@ -6,7 +6,6 @@ import Image from 'next/image'
 import path from 'path'
 import mapFolder from 'map-folder'
 // import exifr from 'exifr' // MUST BE USED TO NOT ERROR
-import moment from 'moment'
 
 // Component Imports
 import SimpleNav from '../../components/layout/simple-nav'

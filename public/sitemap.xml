@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://elibenton.co/404</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/404</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/about</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/about</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/newsletter</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/newsletter</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/observable</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/observable</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/player</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/player</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/privacy</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/privacy</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/projects</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/projects</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/search</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/search</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/blog/[slug]</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/blog/[slug]</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/book/[slug]</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/book/[slug]</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/book/index</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/book/index</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/places/[place]</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/photos/[photo]</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/places/index</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/photos/index</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/photos/[photo]</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/places/[place]</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/photos/index</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/places/index</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/tags/[tag]</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/tags/[tag]</loc>
+	</url>
 
-  <url>
-    <loc>https://elibenton.co/tags/index</loc>
-  </url>
+	<url>
+		<loc>https://elibenton.co/tags/index</loc>
+	</url>
 </urlset>

@@ -3,15 +3,16 @@ import dynamic from 'next/dynamic'
 
 // Package Imports
 import hydrate from 'next-mdx-remote/hydrate'
-import _ from 'lodash'
+import { format, parseISO } from 'date-fns'
 import readingTime from 'reading-time'
-import moment from 'moment'
 
 // Component Imports
 import Nav from '../../components/layout/post-nav'
 import BlogSEO from '../../components/blog-seo'
+import Body from '../../components/post-body'
+import Header from '../../components/post-header'
 
-// Utility Imports
+// Library Imports
 import { getFilePaths, getFileBySlug } from '../../lib/mdx'
 
 const components = {
@@ -20,67 +21,18 @@ const components = {
 	Subscribe: dynamic(() => import('../../components/subscribe-big'))
 }
 
-const editUrl = slug =>
-	`https://github.com/elibenton/blog-2.0/tree/master/posts/${slug}.mdx`
+const editUrl = slug => `https://github.com/elibenton/blog-2.0/tree/master/posts/${slug}.mdx`
 
 export default function PostPage({ mdxSource, frontMatter }) {
-	const {
-		slug,
-		title,
-		date,
-		location,
-		description,
-		country,
-		type,
-		readingTime: { minutes, words }
-	} = frontMatter
+	const { slug, title, date, location } = frontMatter
 
 	const content = hydrate(mdxSource, { components })
 	return (
 		<>
 			<BlogSEO {...frontMatter} />
-			<Nav
-				title={title}
-				date={moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
-				location={location}
-			/>
-			<div className='flex flex-col sm:flex-row justify-between space-y-4'>
-				<div className='lg:ml-8'>
-					<h1 className='font-akzidenz text-4xl md:text-7xl max-w-3xl leading-none '>
-						{title}
-					</h1>
-					{description && (
-						<p className='italic text-lg max-w-3xl'>{description}</p>
-					)}
-				</div>
-				<div className='self-start sm:self-center lg:mr-16'>
-					<ul className='border-l-2 border-black'>
-						{date && (
-							<li className='pl-4'>
-								{moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
-							</li>
-						)}
-						{location && (
-							<li className='pl-4'>
-								{location},&nbsp;
-								{country && country}
-							</li>
-						)}
-						<li className='pl-4'>
-							{type && _.upperFirst(type)}
-							{readingTime &&
-								type !== 'audio' &&
-								` • ${_.ceil(minutes * 1.2)} minutes • ${words} words`}
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-16'>
-				<main>{content}</main>
-				<a href={editUrl(slug)} className='font-bold'>
-					Edit on Github
-				</a>
-			</div>
+			<Nav title={title} date={format(parseISO(date), 'MMMM dd, yyyy')} location={location} />
+			<Header {...frontMatter} date={format(parseISO(date), 'MMMM dd, yyyy')} />
+			<Body content={content} slug={slug} />
 		</>
 	)
 }

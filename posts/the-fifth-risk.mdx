@@ -18,6 +18,32 @@ tags:
 isbn: 9780393357455
 ---
 
+```html:hello
+<div className="flex flex-col sm:flex-row justify-between space-y-4">
+	<div className="lg:ml-8">
+		<h1
+			className="font-akzidenz text-4xl md:text-7xl max-w-3xl leading-none "
+		>
+			{title}
+		</h1>
+		<p className="font-plex text-lg max-w-3xl">{description}</p>
+	</div>
+	<div className="self-start sm:self-center lg:mr-16">
+		<ul className="border-l-2 border-black">
+			<li className="pl-4">
+				{moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
+			</li>
+			<li className="pl-4">{location},&nbsp; {country}</li>
+
+			<li className="pl-4">
+				{_.upperFirst(type)} {type !== 'audio' && ` • ${_.ceil(minutes *
+				1.2)} minutes • ${words} words`}
+			</li>
+		</ul>
+	</div>
+</div>
+```
+
 _The Fifth Risk_ is a largely enjoyable, highly readable, and relatively short
 foray into the lives of career bureaucrats. The people, as Michael Lewis writes,
 who are "in it for the mission" but “couldn’t or wouldn’t defend themselves.”

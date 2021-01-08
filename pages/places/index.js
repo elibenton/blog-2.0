@@ -1,13 +1,12 @@
 // Package Imports
-import _ from 'lodash'
-import moment from 'moment'
+import { parseISO, format } from 'date-fns'
 
 // Component Imports
 import Entry from '../../components/entry'
 import WorldMap from '../../components/world-map'
 import SimpleNav from '../../components/layout/simple-nav'
 
-// Utility Imports
+// Library Imports
 import { getAllFilesFrontMatter } from '../../lib/mdx'
 
 export default function PlaceIndex({ posts }) {
@@ -27,14 +26,8 @@ export default function PlaceIndex({ posts }) {
 					<h1 className='text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8'>
 						The Globe
 					</h1>
-					{posts.map(({ title, slug, date, location, country }) => (
-						<Entry
-							title={title}
-							link={slug}
-							dates={moment(date).format('MMMM DD, YYYY')}
-							locations={location}
-							country={country}
-						/>
+					{posts.map(post => (
+						<Entry {...post} />
 					))}
 				</div>
 			</div>

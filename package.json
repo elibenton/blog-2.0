@@ -1,19 +1,26 @@
 {
-	"name": "with-tailwindcss",
-	"version": "1.0.0",
+	"name": "elibenton.co",
+	"description": "My personal",
+	"version": "0.0.1",
 	"scripts": {
 		"dev": "next",
-		"dev:watch": "next-remote-watch ./posts",
 		"build": "next build",
-		"start": "next start"
+		"start": "next start",
+		"lint": "eslint"
 	},
+	"author": {
+		"name": "Eli Benton Cohen",
+		"email": "mail@elibenton.co",
+		"url": "https://elibenton.co"
+	},
+	"license": "MIT",
 	"dependencies": {
 		"@observablehq/runtime": "4",
-		"@silvenon/remark-smartypants": "^1.0.0",
-		"@tailwindcss/typography": "^0.2.0",
+		"@tailwindcss/typography": "^0.3.1",
 		"comma-number": "^2.0.1",
 		"d3": "^6.3.1",
 		"d3-geo": "^2.0.1",
+		"date-fns": "^2.16.1",
 		"exifr": "^6.0.0",
 		"fs": "^0.0.1-security",
 		"gray-matter": "^4.0.2",
@@ -25,7 +32,6 @@
 		"moment": "^2.29.1",
 		"next": "^10.0.0",
 		"next-mdx-remote": "^1.0.0",
-		"next-remote-watch": "^0.2.0",
 		"next-seo": "^4.7.3",
 		"next-themes": "^0.0.10",
 		"react": "^17.0.1",
@@ -44,25 +50,29 @@
 		"smartypants": "^0.1.1",
 		"styled-components": "^5.2.1",
 		"swr": "^0.3.11",
-		"topojson-client": "^3.1.0"
+		"topojson-client": "^3.1.0",
+		"voca": "^1.4.0"
 	},
 	"devDependencies": {
 		"@babel/plugin-syntax-import-meta": "^7.10.4",
 		"autoprefixer": "^10.1.0",
-		"eslint": "^7.13.0",
+		"babel-eslint": "^10.1.0",
+		"eslint": "^7.17.0",
 		"eslint-config-airbnb": "^18.2.1",
-		"eslint-config-prettier": "^6.15.0",
+		"eslint-config-nextjs": "1.0.6",
+		"eslint-config-prettier": "^4.1.0",
+		"eslint-plugin-html": "^5.0.3",
 		"eslint-plugin-import": "^2.22.1",
 		"eslint-plugin-jsx-a11y": "^6.4.1",
-		"eslint-plugin-react": "^7.21.5",
+		"eslint-plugin-prettier": "^3.0.1",
+		"eslint-plugin-react": "^7.22.0",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"globby": "^11.0.1",
 		"postcss": "^8.2.1",
 		"postcss-flexbugs-fixes": "4.2.1",
 		"postcss-preset-env": "^6.7.0",
-		"prettier": "^2.2.1",
+		"prettier": "^1.16.4",
 		"rehype": "^11.0.0",
 		"tailwindcss": "^2.0.2"
-	},
-	"license": "MIT"
+	}
 }

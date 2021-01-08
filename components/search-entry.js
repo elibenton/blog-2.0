@@ -38,18 +38,16 @@ export default function Entry({
 									)}
 					</a>
 				</Link>
-				<span className='flex flex-col sm:inline-flex sm:flex-row'>
-					<span className='hidden group-hover:italic sm:inline-flex flex-col align-top font-normal text-sm ml-2 relative -mt-0.5'>
-						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
-							{date}
-						</a>
-						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
-							{location}
-						</a>
-						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
-							{_.upperFirst(type)}
-						</a>
-					</span>
+				<span className='hidden group-hover:italic sm:inline-flex flex-col align-top font-normal text-sm ml-2 relative -mt-0.5'>
+					<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
+						{date}
+					</a>
+					<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
+						{location}
+					</a>
+					<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
+						{_.upperFirst(type)}
+					</a>
 				</span>
 				{searchTerm !== '' && searchTerm.length >= 2 && (
 					<p className='max-w-xl text-sm mt-2 mb-10'>

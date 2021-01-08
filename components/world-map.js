@@ -7,7 +7,7 @@ import {
 	Graticule
 } from 'react-simple-maps'
 
-// Utility Imports
+// Library Imports
 import { map } from '../lib/country-maps'
 
 const WorldMap = ({ coordinates, country }) => {

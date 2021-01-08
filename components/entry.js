@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import _ from 'lodash'
+import { titleCase, kebabCase } from 'voca'
+import { parseISO, format } from 'date-fns'
 
 export default function Entry({ title, date, location, country, type, slug }) {
 	return (
@@ -18,13 +19,13 @@ export default function Entry({ title, date, location, country, type, slug }) {
 					</Link>
 					<span className='hidden group-hover:italic sm:inline-flex flex-col align-top font-normal text-sm ml-2 relative -mt-0.5'>
 						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
-							{date}
+							{format(parseISO(date), 'MMMM d, yyyy')}
 						</a>
 						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
 							{location}
 						</a>
 						<a className='dark:hover:text-black self-start px-1 rounded hover:bg-yellow-200 -mt-0.5'>
-							{_.upperFirst(type)}
+							{titleCase(type)}
 						</a>
 					</span>
 				</span>
@@ -33,8 +34,8 @@ export default function Entry({ title, date, location, country, type, slug }) {
 				<a className='font-bold sm:hidden text-1xl pb-0 pt-2'>{title}</a>
 			</Link>
 			<div className='sm:hidden flex flex-row pb-4'>
-				<div>{date}</div>&nbsp;•&nbsp;
-				<Link href={`/places/${_.kebabCase(country)}`}>
+				<div>{format(parseISO(date), 'MMMM d, yyyy')}</div>&nbsp;•&nbsp;
+				<Link href={`/places/${kebabCase(country)}`}>
 					<a>{location}</a>
 				</Link>
 			</div>

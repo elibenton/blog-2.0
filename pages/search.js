@@ -1,11 +1,10 @@
+// Package Imports
 import { useState } from 'react'
+import { parseISO, format } from 'date-fns'
+import cache from 'memory-cache'
 import Link from 'next/link'
 
-// Package Imports
-import _ from 'lodash'
 import { getAllFilesFrontMatter } from '../lib/mdx'
-import moment from 'moment'
-import cache from 'memory-cache'
 
 // Component Imports
 import SearchEntry from '../components/search-entry'
@@ -55,9 +54,7 @@ export default function PlaceIndex({ postData }) {
 						<SearchEntry
 							{...frontmatter}
 							searchTerm={searchValue}
-							date={moment(postData.date, 'YYYY-MM-DD').format(
-								'MMMM DD, YYYY'
-							)}
+							date={format(parseISO(frontmatter.date), 'MMMM d, yyyy')}
 						/>
 					))}
 				</div>

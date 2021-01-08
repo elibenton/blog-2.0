@@ -3,16 +3,16 @@ import dynamic from 'next/dynamic'
 import hydrate from 'next-mdx-remote/hydrate'
 
 // Package Imports
-import _ from 'lodash'
-import readingTime from 'reading-time'
-import moment from 'moment'
+import { parseISO, format } from 'date-fns'
+import { titleCase } from 'voca'
 import cache from 'memory-cache'
 
 // Component Imports
 import Nav from '../../components/layout/post-nav'
 import BlogSEO from '../../components/blog-seo'
+import Body from '../../components/post-body'
 
-// Utility Imports
+// Library Imports
 import { getFilePaths, getFileBySlug } from '../../lib/mdx'
 
 const components = {
@@ -20,9 +20,6 @@ const components = {
 	Citation: dynamic(() => import('../../components/citation/citation')),
 	Subscribe: dynamic(() => import('../../components/subscribe-big'))
 }
-
-const editUrl = slug =>
-	`https://github.com/elibenton/blog-2.0/tree/master/posts/${slug}.mdx`
 
 export default function PostPage({ source, frontmatter }) {
 	const {
@@ -45,7 +42,7 @@ export default function PostPage({ source, frontmatter }) {
 			<BlogSEO {...frontmatter} />
 			<Nav
 				title={title}
-				date={moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
+				date={format(parseISO(date), 'MMMM d, yyyy')}
 				location={location}
 			/>
 			<div className='flex flex-col sm:flex-row justify-between space-y-4'>
@@ -58,10 +55,10 @@ export default function PostPage({ source, frontmatter }) {
 					)}
 				</div>
 				<div className='self-start sm:self-center lg:mr-16 w-1/4'>
-					{/* <ul className='border-l-2 border-black'>
+					<ul className='border-l-2 border-black'>
 						{date && (
 							<li className='pl-4'>
-								{moment(date, 'YYYY-MM-DD').format('MMMM DD, YYYY')}
+								{format(parseISO(frontmatter.date), 'MMMM d, yyyy')}
 							</li>
 						)}
 						{location && (
@@ -71,17 +68,16 @@ export default function PostPage({ source, frontmatter }) {
 							</li>
 						)}
 						<li className='pl-4'>
-							{type && _.upperFirst(type)}
-							{readingTime &&
-								type !== 'audio' &&
-								` • ${_.ceil(minutes * 1.2)} minutes • ${words} words`}
+							{type && titleCase(type)}
+							{type !== 'audio' &&
+								` • ${Math.ceil(minutes)} minutes • ${words} words`}
 						</li>
 						<li className='pl-4'>
 							<a className='hover:underline' href={affiliateLink}>
 								Buy from your local bookstore (affiliate link)
 							</a>
 						</li>
-					</ul> */}
+					</ul>
 					<div className='border-2 border-black h-auto p-4'>
 						<h3>{bookLinks.results.title[0]}</h3>
 						<h4>By {bookLinks.results.authors[0]}</h4>
@@ -115,16 +111,7 @@ export default function PostPage({ source, frontmatter }) {
 				data-link='true'
 			/>
 			<script src='//lithub.com/b/v1/bookmarks.js?ver=1.3' /> */}
-			<div className='w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-16'>
-				<main className='border-b border-black pb-8 mb-4'>{content}</main>
-				<div className='text-right'>
-					See a typo? Help me fix it.
-					<br />
-					<a href={editUrl(slug)} className='font-bold'>
-						Edit on Github
-					</a>
-				</div>
-			</div>
+			<Body content={content} slug={slug} />
 		</>
 	)
 }

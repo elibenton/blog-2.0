@@ -50,8 +50,6 @@ export default function Subscribe() {
 	const subscriberCount = format(data?.countSubs)
 	const issuesCount = format(data?.countIssues)
 
-	// console.log(data)
-
 	const subscribe = async e => {
 		e.preventDefault()
 		setForm({ state: 'loading' })
