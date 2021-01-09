@@ -6,7 +6,8 @@
 		"dev": "next",
 		"build": "next build",
 		"start": "next start",
-		"lint": "eslint"
+		"format": "prettier --write .",
+		"lint": "eslint . --ext js --ext jsx"
 	},
 	"author": {
 		"name": "Eli Benton Cohen",
@@ -71,7 +72,7 @@
 		"postcss": "^8.2.1",
 		"postcss-flexbugs-fixes": "4.2.1",
 		"postcss-preset-env": "^6.7.0",
-		"prettier": "^1.16.4",
+		"prettier": "^2.2.1",
 		"rehype": "^11.0.0",
 		"tailwindcss": "^2.0.2"
 	}
