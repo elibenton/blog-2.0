@@ -76,6 +76,6 @@
 		"tailwindcss": "^2.0.2"
 	},
 	"resolutions": {
-		"webpack": "4.44.2"
+		"webpack": "^5.4.0"
 	}
 }
