@@ -17,22 +17,25 @@ export default function Portfolio({ groupedPosts }) {
 
 			<div className="flex flex-row">
 				<div className="flex-grow">
-					{groupedPosts.map(group =>
-						group[1].map(entry => (
-							<Section sectionName={entry[0]}>
+					{groupedPosts.map((group) =>
+						group[1].map((entry) => (
+							<Section sectionName={entry[0]} key={entry[0]}>
 								{entry
 									.slice(1, 2)
-									.map(article => article.map(frontmatter => <Entry {...frontmatter} />))}
+									.map((article) =>
+										article.map((frontmatter) => (
+											<Entry key={frontmatter.name} {...frontmatter} />
+										))
+									)}
 							</Section>
 						))
 					)}
 				</div>
-
 				<aside className="hidden lg:flex flex-col flex-wrap w-48 sticky-top self-start px-4">
 					<ul className="mt-6">
-						{groupedPosts.map(group =>
-							group[1].map(entry => (
-								<li>
+						{groupedPosts.map((group) =>
+							group[1].map((entry) => (
+								<li key={entry[0]}>
 									<a className="text-lg hover:italic expand" href={`#${entry[0]}`}>
 										{entry[0]}
 									</a>

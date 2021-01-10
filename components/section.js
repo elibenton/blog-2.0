@@ -1,12 +1,10 @@
 export default function Section({ sectionName, children }) {
 	return (
-		<div className='flex mb-10' id={sectionName}>
-			<div className='self-start sticky-top vertical'>
-				<p className='text-bold text-green-500 sm:pt-2'>{sectionName}</p>
+		<div className="flex" id={sectionName}>
+			<div className="self-start sticky-top vertical mt-1 text-green-500 overflow-scroll">
+				{sectionName}
 			</div>
-			<div id='projects' className='flex-col m-2 sm:m-4'>
-				{children}
-			</div>
+			<div className="ml-2.5 flex-col">{children}</div>
 		</div>
 	)
 }

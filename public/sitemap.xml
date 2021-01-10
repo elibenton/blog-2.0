@@ -65,6 +65,10 @@
 	</url>
 
 	<url>
+		<loc>https://elibenton.co/scroll/[slug]</loc>
+	</url>
+
+	<url>
 		<loc>https://elibenton.co/tags/[tag]</loc>
 	</url>
 

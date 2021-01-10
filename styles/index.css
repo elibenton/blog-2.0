@@ -1,45 +1,13 @@
 @tailwind base;
 
 /* Write your own custom base styles here */
-h1 {
-	font-size: xx-large;
-	font-weight: 600;
-	padding-top: 6px;
-	padding-bottom: 18px;
-}
-
-h2 {
-	font-size: x-large;
-	padding-top: 6px;
-	padding-bottom: 18px;
-}
-
-h3 {
-	font-size: large;
-	font-weight: 600;
-	padding-top: 4px;
-	padding-bottom: 12px;
-}
-
-p {
-	font-size: large;
-	margin: 16px 0 16px 0;
-}
-
 ::selection {
 	@apply dark:text-yellow-300 dark:bg-transparent bg-yellow-300;
 }
 
-.navbar {
-	position: sticky;
-	z-index: 10;
-	top: 0;
-	border-bottom: 2px solid black;
-	/* backdrop-filter: saturate(180%) blur(20px); */
-}
-
 .underline {
 	text-decoration-color: gold;
+	text-decoration: underline;
 }
 
 .vertical {
@@ -66,8 +34,7 @@ p {
 @font-face {
 	font-family: Akzidenz Grotesk;
 	font-weight: 400;
-	src: url(fonts/akzidenz-grotesk/Akzidenz-grotesk-roman.ttf)
-		format('truetype');
+	src: url(fonts/akzidenz-grotesk/Akzidenz-grotesk-roman.ttf) format('truetype');
 }
 
 /* Start purging... */
@@ -75,10 +42,6 @@ p {
 /* Stop purging. */
 
 /* Write you own custom component styles here */
-.btn-blue {
-	@apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
-}
-
 .expand {
 	position: relative;
 	text-decoration: none;
@@ -102,3 +65,97 @@ p {
 /* Stop purging. */
 
 /* Your own custom utilities */
+.prose pre {
+	@apply bg-gray-50 border border-gray-200 dark:border-gray-700 dark:bg-gray-900;
+}
+
+.prose code {
+	@apply text-gray-800 dark:text-gray-200 px-1 py-0.5 border border-gray-100 dark:border-gray-800 rounded-md bg-gray-100 dark:bg-gray-900;
+}
+
+.prose img {
+	/* Don't apply styles to next/image */
+	@apply m-0;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	@apply text-gray-700 dark:text-gray-300;
+}
+
+.token.punctuation {
+	@apply text-gray-700 dark:text-gray-300;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	@apply text-green-500;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	@apply text-purple-500;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	@apply text-yellow-500;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	@apply text-blue-500;
+}
+
+.token.function,
+.token.class-name {
+	@apply text-pink-500;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	@apply text-yellow-500;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+	@apply text-gray-800 dark:text-gray-50 text-sm p-3;
+}
+
+pre::-webkit-scrollbar {
+	display: none;
+}
+
+pre {
+	@apply border-gray-200 border;
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+.remark-code-title {
+	@apply text-gray-800 dark:text-gray-200 p-3 border border-b-0 border-gray-200 dark:border-gray-700 rounded-t bg-gray-200 dark:bg-gray-800 text-sm font-plex font-bold;
+}
+
+.remark-code-title + pre {
+	@apply mt-0 rounded-t-none;
+}
+
+.mdx-marker {
+	@apply block -mx-4 px-4 bg-gray-100 dark:bg-gray-800 border-l-4 border-blue-500;
+}

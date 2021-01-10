@@ -6,7 +6,7 @@ export default function Nav({ title, location, date }) {
 	const [showModal, setShowModal] = useState(false)
 
 	return (
-		<nav className="bg-gray-100 dark:bg-black mb-8 border-b-2 border-black dark:border-gray-100 sticky top-0 z-10">
+		<nav className=" dark:bg-black bg-white mb-8 border-b-2 border-black dark:border-gray-100 sticky top-0 z-10">
 			<ul className="flex justify-between items-center pt-5 pb-3">
 				<li>
 					<Link href="/">

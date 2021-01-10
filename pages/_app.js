@@ -1,4 +1,4 @@
-// Defauly Imports
+// Defaults Imports
 import React from 'react'
 import Head from 'next/head'
 
@@ -18,14 +18,9 @@ import Footer from '../components/layout/footer'
 export default function MyApp({ Component, pageProps }) {
 	return (
 		<React.StrictMode>
-			<ThemeProvider
-				forcedTheme={Component.theme || undefined}
-				attribute='class'>
+			<ThemeProvider forcedTheme={Component.theme || undefined} attribute="class">
 				<Head>
-					<meta
-						content='width=device-width, initial-scale=1'
-						name='viewport'
-					/>
+					<meta content="width=device-width, initial-scale=1" name="viewport" />
 				</Head>
 				<DefaultSeo {...SEO} />
 				<Component {...pageProps} />

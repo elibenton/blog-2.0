@@ -7,20 +7,17 @@ export default async (req, res) => {
 
 	try {
 		const API_KEY = process.env.BUTTONDOWN_API_KEY
-		const response = await fetch(
-			`https://api.buttondown.email/v1/subscribers`,
-			{
-				body: JSON.stringify({
-					email,
-					tags: ['website']
-				}),
-				headers: {
-					'Authorization': `Token ${API_KEY}`,
-					'Content-Type': 'application/json'
-				},
-				method: 'POST'
-			}
-		)
+		const response = await fetch(`https://api.buttondown.email/v1/subscribers`, {
+			body: JSON.stringify({
+				email,
+				tags: ['website']
+			}),
+			headers: {
+				Authorization: `Token ${API_KEY}`,
+				'Content-Type': 'application/json'
+			},
+			method: 'POST'
+		})
 
 		if (response.status >= 400) {
 			const text = await response.text()

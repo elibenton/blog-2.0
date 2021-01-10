@@ -14,16 +14,16 @@ export default function ImageGrid({ photosInfo }) {
 	return (
 		<>
 			<SimpleNav />
-			<h1 className='text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8'>
+			<h1 className="text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8">
 				Photos
 			</h1>
-			<ul className='flex flex-row flex-wrap'>
-				{photosInfo.map(image => (
-					<li className='flex-grow'>
+			<ul className="flex flex-row flex-wrap">
+				{photosInfo.map((image) => (
+					<li className="flex-grow">
 						<Image
-							className='object-contain max-w-full max-h-full align-bottom'
+							className="object-contain max-w-full max-h-full align-bottom"
 							src={image.path}
-							layout='intrinsic'
+							layout="intrinsic"
 							width={400}
 							height={400}
 						/>
@@ -56,7 +56,7 @@ export async function getStaticProps() {
 	const photosRoot = path.join(root, 'public/photos')
 	const folderMap = mapFolder(photosRoot)
 	const photosInfo = await Promise.all(
-		Object.entries(folderMap.entries).map(async d => {
+		Object.entries(folderMap.entries).map(async (d) => {
 			// const imageData = await exifr.parse(
 			// 	path.join(photosRoot, `/${d[0]}`),
 			// 	['ISO', 'FNumber', 'DateTimeOriginal']

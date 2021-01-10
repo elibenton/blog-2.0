@@ -46,7 +46,7 @@ export default function Projects() {
 	return (
 		<>
 			<SimpleNav />
-			{data.map(data => (
+			{data.map((data) => (
 				<ProjectCard key={data.name} {...data} />
 			))}
 		</>

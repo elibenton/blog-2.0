@@ -18,7 +18,7 @@ export default function DarkMode() {
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
 					fill="currentColor"
-					className="h-4 w-4 text-black dark:text-gray-100">
+					className="h-4 w-4 text-black dark:text-white">
 					{theme === 'dark' ? (
 						<path
 							fillRule="evenodd"

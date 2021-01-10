@@ -48,7 +48,7 @@ export default function Intro() {
 			<div className="absolute bottom-0 inset-x-0 mb-8">
 				<div className="flex justify-center">
 					<svg
-						className="animate-bounce w-12 h-12 text-black dark:text-gray-100"
+						className="animate-bounce w-12 h-12 text-black dark:text-white"
 						fill="none"
 						strokeLinecap="round"
 						strokeLinejoin="round"

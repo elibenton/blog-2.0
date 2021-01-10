@@ -73,14 +73,14 @@ class Citation extends React.Component {
 		window.removeEventListener('resize', this.handleResize)
 	}
 
-	handleTouch = event => {
+	handleTouch = (event) => {
 		event.preventDefault()
 		event.stopPropagation() //-- because will propagate to click outside
 		this.clickLocationY = event.touches[0].pageY
 		this.toggleVisibility()
 	}
 
-	handleIconClick = event => {
+	handleIconClick = (event) => {
 		// event.preventDefault();
 		this.clickLocationY = event.pageY
 		this.toggleVisibility()
@@ -101,7 +101,7 @@ class Citation extends React.Component {
 		})
 	}
 
-	toggleVisibility = forceVisible => {
+	toggleVisibility = (forceVisible) => {
 		let visibility = !this.state.isPopupVisible
 		if (forceVisible !== undefined) visibility = forceVisible
 		this.setState({

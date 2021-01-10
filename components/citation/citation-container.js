@@ -83,24 +83,21 @@ class CitationContainer extends React.Component {
 			window.scroll({
 				top:
 					this.props.clickPos -
-					(window.innerHeight || document.documentElement.clientHeight) /
-						4,
+					(window.innerHeight || document.documentElement.clientHeight) / 4,
 				behavior: 'smooth'
 			})
 		} else {
 			window.scroll({
 				top:
 					this.props.clickPos -
-					(window.innerHeight || document.documentElement.clientHeight) /
-						2,
+					(window.innerHeight || document.documentElement.clientHeight) / 2,
 				behavior: 'smooth'
 			})
 		}
 		//-- delay start of recording bc otherwise our scroll-into-focus will autocancel it
 		setTimeout(() => {
 			this.setState({
-				initialScrollY:
-					window.pageYOffset || document.documentElement.scrollTop,
+				initialScrollY: window.pageYOffset || document.documentElement.scrollTop,
 				doneScrolling: true
 			})
 		}, 600)
@@ -116,7 +113,7 @@ class CitationContainer extends React.Component {
 		window.removeEventListener('scroll', this.handleScroll)
 	}
 
-	handleKeyDown = event => {
+	handleKeyDown = (event) => {
 		if (event.key === 'Escape') {
 			this.props.toggleVisibility(false)
 		}
@@ -125,9 +122,7 @@ class CitationContainer extends React.Component {
 	handleResize = () => {
 		let w = window.innerWidth || document.documentElement.clientWidth
 		this.setState({ windowWidth: w })
-		w < 1024
-			? this.setState({ isXsScreen: true })
-			: this.setState({ isXsScreen: false })
+		w < 1024 ? this.setState({ isXsScreen: true }) : this.setState({ isXsScreen: false })
 		this.props.toggleVisibility(false)
 	}
 
@@ -138,10 +133,7 @@ class CitationContainer extends React.Component {
 		let currentY = window.pageYOffset || document.documentElement.scrollTop
 		//-- dismiss after user scrolls 20% of the screen height in either direction
 		let height = window.innerHeight || document.documentElement.clientHeight
-		if (
-			this.state.doneScrolling &&
-			Math.abs(currentY - this.state.initialScrollY) > height / 6
-		) {
+		if (this.state.doneScrolling && Math.abs(currentY - this.state.initialScrollY) > height / 6) {
 			this.props.toggleVisibility(false)
 		}
 	}

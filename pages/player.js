@@ -28,7 +28,7 @@ export default function Player() {
 	return (
 		<div>
 			<h1>Hello</h1>
-			<div id='container' />
+			<div id="container" />
 		</div>
 	)
 }

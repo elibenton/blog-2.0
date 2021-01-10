@@ -10,7 +10,7 @@ const Icon = styled.span`
 	height: 14px;
 	width: 14px;
 	margin-left: 4px;
-	background-color: ${props => (props.isActive ? Color('yellow') : '#eee')};
+	background-color: ${(props) => (props.isActive ? Color('yellow') : '#eee')};
 	border-radius: 7px;
 	pointer-events: auto;
 	cursor: pointer;
