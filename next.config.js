@@ -1,7 +1,7 @@
 // next.config.js
 module.exports = {
 	images: {
-		domains: ['images.pexels.com', 'images.unsplash.com']
+		domains: ['dl.airtable.com']
 	},
 	reactStrictMode: true,
 	webpack: (config, { isServer }) => {

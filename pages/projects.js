@@ -5,6 +5,15 @@ import ProjectCard from '../components/project-card'
 export default function Projects() {
 	const data = [
 		{
+			href: 'https://dontwait.vote/',
+			src: '/icons/vote.png',
+			alt: 'Dont Wait Logo',
+			name: `Don't Wait, Vote!`,
+			date: 'November 2020',
+			location: 'Birmingham, Alabama',
+			description: `In the wake of George Floyd's murder, we sought to better inform the public about local elections--the elections that can actually fix policing in America. Our website pulls information on criminal justice races for any address in the country. The results show who is running, they're endorsements, and biographical information.`
+		},
+		{
 			href: 'http://51.watson.foundation/fellows/eli-cohen.html',
 			src: '/icons/watson.png',
 			svg: 'icons/watson.svg',
@@ -13,15 +22,6 @@ export default function Projects() {
 			date: 'August 2020',
 			location: 'New York, New York',
 			description: `In the modern world, we channel our almost every aspect of our lives through digital technology. Through a steady accumulation of seemingly neutral choices, I believe that we are changing our relationship to reality faster than we can understand the consequences.`
-		},
-		{
-			href: 'https://dontwait.vote/',
-			src: '/icons/vote.png',
-			alt: 'Dont Wait Logo',
-			name: `Don't Wait, Vote!`,
-			date: 'November 2020',
-			location: 'Birmingham, Alabama',
-			description: `In the wake of George Floyd's murder, we sought a better way to inform the public about the elections that can fix policing in America. Our service pulls information on criminal justice races for any address in the country. The results show who is running, they're endorsements, and biographical information.`
 		},
 		{
 			href:
@@ -46,9 +46,11 @@ export default function Projects() {
 	return (
 		<>
 			<SimpleNav />
-			{data.map((data) => (
-				<ProjectCard key={data.name} {...data} />
-			))}
+			<div className="justify-center mx-auto max-w-4xl">
+				{data.map((data) => (
+					<ProjectCard key={data.name} {...data} />
+				))}
+			</div>
 		</>
 	)
 }

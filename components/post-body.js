@@ -1,6 +1,6 @@
 export default function PostBody({ content, slug }) {
 	return (
-		<div className="prose dark:prose-dark w-full md:w-2/3 xl:w-1/2 justify-center mx-auto mt-16">
+		<div className="relative prose dark:prose-dark md:w-7/12 xl:w-1/2 mx-auto mt-16 flex flex-col">
 			<main className="border-b border-black pb-8 mb-4">{content}</main>
 			<div className="text-right">
 				See a typo? Help me fix it.

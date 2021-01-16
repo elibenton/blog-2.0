@@ -9,6 +9,10 @@
 	</url>
 
 	<url>
+		<loc>https://elibenton.co/bookmarks</loc>
+	</url>
+
+	<url>
 		<loc>https://elibenton.co</loc>
 	</url>
 
@@ -49,18 +53,18 @@
 	</url>
 
 	<url>
-		<loc>https://elibenton.co/places/[place]</loc>
-	</url>
-
-	<url>
-		<loc>https://elibenton.co/places/index</loc>
-	</url>
-
-	<url>
 		<loc>https://elibenton.co/tags/[tag]</loc>
 	</url>
 
 	<url>
 		<loc>https://elibenton.co/tags/index</loc>
+	</url>
+
+	<url>
+		<loc>https://elibenton.co/places/[place]</loc>
+	</url>
+
+	<url>
+		<loc>https://elibenton.co/places/index</loc>
 	</url>
 </urlset>

@@ -20,6 +20,7 @@
 		"@n8tb1t/use-scroll-position": "^2.0.3",
 		"@observablehq/runtime": "4",
 		"@tailwindcss/typography": "^0.3.1",
+		"airtable": "^0.10.1",
 		"comma-number": "^2.0.1",
 		"d3": "^6.3.1",
 		"d3-geo": "^2.0.1",

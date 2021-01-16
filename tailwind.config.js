@@ -128,8 +128,8 @@ module.exports = {
 		display: ['group-hover', 'responsive'],
 		flex: ['group-hover'],
 		transitionDuration: ['group-hover', 'hover'],
-		borderOpacity: ['hover'],
-		border: ['hover'],
+		borderOpacity: ['hover', 'group-hover'],
+		border: ['hover', 'group-hover'],
 		visibility: ['hover', 'group-hover'],
 		ring: ['group-hover']
 	},

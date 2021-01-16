@@ -5,8 +5,23 @@
 	@apply dark:text-yellow-300 dark:bg-transparent bg-yellow-300;
 }
 
-.underline {
+.underline-yellow {
 	text-decoration-color: gold;
+	text-decoration: underline;
+}
+
+.underline-green {
+	text-decoration-color: greenyellow;
+	text-decoration: underline;
+}
+
+.underline-blue {
+	text-decoration-color: skyblue;
+	text-decoration: underline;
+}
+
+.underline-red {
+	text-decoration-color: orangered;
 	text-decoration: underline;
 }
 
@@ -32,9 +47,21 @@
 }
 
 @font-face {
+	font-family: IBM Plex Mono;
+	font-weight: 700;
+	src: url(fonts/ibm-plex-mono/IBMPlexMono-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
 	font-family: Akzidenz Grotesk;
 	font-weight: 400;
 	src: url(fonts/akzidenz-grotesk/Akzidenz-grotesk-roman.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: Lorna;
+	font-weight: 600;
+	src: url(fonts/lora/Lora-Bold.ttf) format('truetype');
 }
 
 /* Start purging... */

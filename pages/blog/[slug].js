@@ -18,7 +18,8 @@ import { getFilePaths, getFileBySlug } from '../../lib/mdx'
 const components = {
 	Image: dynamic(() => import('../../components/image')),
 	Citation: dynamic(() => import('../../components/citation/citation')),
-	Subscribe: dynamic(() => import('../../components/subscribe-big'))
+	Subscribe: dynamic(() => import('../../components/subscribe-big')),
+	RelatedPosts: dynamic(() => import('../../components/related-posts'))
 }
 
 const editUrl = (slug) => `https://github.com/elibenton/blog-2.0/tree/master/posts/${slug}.mdx`
