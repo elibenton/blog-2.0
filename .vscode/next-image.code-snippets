@@ -11,14 +11,15 @@
 		"prefix": "image",
 		"body": [
 			"<Image",
-			"src={`/photos/${1:src}.jpeg`}",
-			"alt={`${2:alt}`}",
-			"width={${3:width}}",
-			"height={${4:height}}",
-			"${5:priority}",
+			"path={`/photos/${1:src}.jpeg`}",
+			"caption={`${2:alt}`}",
+			"${3:vertical}",
+			"${4:thin}",
+			"${5:fill}",
+			"${6:priority}",
 			"/>",
 			"\n$0"
 		],
-		"description": "Make a Next Image Component"
+		"description": "Wrapper for Next image component"
 	}
 }
