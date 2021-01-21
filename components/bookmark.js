@@ -1,9 +1,15 @@
 import Image from 'next/image'
 import { titleCase } from 'voca'
+import { useInView } from 'react-intersection-observer'
 
 export default function Entry({ Title, Description, Author, Published, Link, Images, searchTerm }) {
+	const { ref, inView, entry } = useInView({
+		/* Optional options */
+		threshold: 0
+	})
+	console.log(inView)
 	return (
-		<div id="Bookmark" className="group flex flex-col sm:flex-row items-start">
+		<div ref={ref} id="Bookmark" className="group flex flex-col sm:flex-row items-start">
 			<div
 				id="Metadata"
 				className="flex flex-row sm:flex-col sm:w-56 sm:pr-5 text-right gap-x-2 sm:gap-0 z-50">
@@ -46,6 +52,7 @@ export default function Entry({ Title, Description, Author, Published, Link, Ima
 						  )}
 				</p>
 			</div>
+
 			{/* <div id="Image" className="hidden group-hover:flex fixed bottom-12 right-0 z-0">
 				{Images &&
 					Images.map((image) => (

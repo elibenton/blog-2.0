@@ -6,7 +6,7 @@ export default function Nav({ title, location, date }) {
 	const [showModal, setShowModal] = useState(false)
 
 	return (
-		<nav className=" dark:bg-black bg-white mb-8 border-b-2 border-black dark:border-gray-100 sticky top-0 z-10">
+		<nav className="dark:bg-black bg-white mb-8 border-b-2 border-black dark:border-gray-100 sticky top-0 z-10 px-3">
 			<ul className="flex justify-between items-center pt-5 pb-3">
 				<li>
 					<Link href="/">
@@ -62,7 +62,6 @@ export default function Nav({ title, location, date }) {
 							</svg>
 						</button>
 					</a>
-
 					<button
 						aria-label="Send As Email"
 						type="button"

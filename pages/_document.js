@@ -36,7 +36,7 @@ class MyDocument extends Document {
 						href="https://emilioschepis.com/rss.xml"
 					/>
 				</Head>
-				<body className="dark:bg-black dark:text-white mx-3 sm:mx-8">
+				<body className="dark:bg-black dark:text-white">
 					<Main />
 					<NextScript />
 				</body>

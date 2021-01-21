@@ -15,6 +15,7 @@ module.exports = {
 			typography: (theme) => ({
 				DEFAULT: {
 					css: {
+						figure: { margin: 0 },
 						color: theme('colors.gray.700'),
 						a: {
 							color: theme('colors.blue.500'),

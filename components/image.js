@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function ImageFill({ path, caption, fill, wide }) {
+export default function ImageFill({ path, caption, width, height, fill, priority }) {
 	return (
 		<>
 			<figure
@@ -20,14 +20,13 @@ export default function ImageFill({ path, caption, fill, wide }) {
 					src={path}
 					alt={caption}
 					layout="responsive"
-					width={wide ? 1600 : 2000}
-					height={wide ? 900 : 1500}
-					quality={100}
-					priority={true}
+					width={width}
+					height={height}
+					priority={priority ? true : false}
 				/>
 			</figure>
 			<figcaption
-				className="text-sm md:text-base flex justify-end p-1 text-gray-800 font-plex mb-12"
+				className="text-sm flex justify-end text-gray-800 font-plex mt-2 mb-12"
 				style={
 					fill
 						? {
