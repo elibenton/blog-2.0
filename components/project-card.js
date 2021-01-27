@@ -5,7 +5,7 @@ export default function PostHead({ href, name, date, location, description }) {
 		<a href={href} target="_blank" rel="noreferrer">
 			<div className="mb-16 flex flex-row">
 				<div className="flex flex-row gap-4 group">
-					{svgMap.get(name)}
+					<div className="w-24 h-24">{svgMap.get(name)}</div>
 					<div className="flex flex-col">
 						<div className="font-bold sm:font-normal text-2xl sm:text-3xl lg:text-4xl text-left group-hover:underline group-hover:text-blue-600 font-akzidenz leading-tight sm:leading-none mb-2">
 							{name}

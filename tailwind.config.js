@@ -1,8 +1,11 @@
 const colors = require('tailwindcss/colors')
-const plugin = require('tailwindcss/plugin')
 const { spacing } = require('tailwindcss/defaultTheme')
 
 module.exports = {
+	future: {
+		removeDeprecatedGapUtilities: true,
+		purgeLayersByDefault: true
+	},
 	darkMode: 'class',
 	purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
 	theme: {
@@ -122,7 +125,6 @@ module.exports = {
 	},
 	variants: {
 		typography: ['dark'],
-		animation: ['motion-safe'],
 		textDecoration: ['hover', 'group-hover', 'active'],
 		fontStyle: ['hover', 'group-hover'],
 		textColor: ['hover', 'group-hover', 'active', 'dark'],
@@ -134,16 +136,5 @@ module.exports = {
 		visibility: ['hover', 'group-hover'],
 		ring: ['group-hover']
 	},
-	plugins: [
-		require('@tailwindcss/typography'),
-		plugin(function ({ addUtilities }) {
-			const extendUnderline = {
-				'.underline': {
-					textDecoration: 'underline',
-					textDecorationColor: 'gold'
-				}
-			}
-			addUtilities(extendUnderline)
-		})
-	]
+	plugins: [require('@tailwindcss/typography')]
 }
