@@ -1,5 +1,5 @@
 const title = 'Eli B. Cohen'
-const description = 'Multimedia Freelance Reporter - Audio, Data, Photography .'
+const description = 'Multimedia Freelance Reporter - Audio, Data, Photography.'
 
 const SEO = {
 	title,

@@ -17,35 +17,36 @@ export default function ImageGrid({ photosInfo }) {
 			<h1 className="text-5xl sm:text-6xl md:text-7xl leading-tight text-left font-bold my-5 sm:mb-8">
 				Photos
 			</h1>
-			<ul className="flex flex-row flex-wrap">
-				{photosInfo.map((image) => (
-					<li className="flex-grow">
+			{/* <div className="flex flex-row flex-wrap">
+				{photosInfo.slice(0, 4).map((image, index) => (
+					<div key={index.toString()} className="flex-grow">
 						<Image
-							className="object-contain max-w-full max-h-full align-bottom"
+							// className="object-contain"
 							src={image.path}
-							layout="intrinsic"
+							// layout="fill"
 							width={400}
 							height={400}
 						/>
-					</li>
+					</div>
 				))}
-			</ul>
-			{/* <div className='flex flex-row flex-wrap gap-y-4 sm:gap-1 overflow-hidden mt-20'>
-				{photosInfo.map(image => (
-					<Link href='/'>
-						<a className='group relative flex flex-grow' href='/'>
-							<p className='absolute invisible group-hover:visible group-hover:duration-200 font text-center text-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-								{image.path.split(' - ')[1].split('.')[0]}
+			</div> */}
+			<div className="flex flex-row flex-wrap gap-y-4 sm:gap-1 overflow-hidden mt-20">
+				{photosInfo.map((image, index) => (
+					<Link key={index.toString()} href="/">
+						<a className="group relative flex flex-grow" href="/">
+							<p className="absolute invisible group-hover:visible group-hover:duration-200 font text-center text-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+								{image.path}
 							</p>
 							<img
-								loading='lazy'
-								className='object-cover sm:h-80 flex-grow group-hover:opacity-50 group-hover:duration-200'
+								loading="lazy"
+								alt={image.path}
+								className="object-cover sm:h-80 flex-grow group-hover:opacity-50 group-hover:duration-200"
 								src={image.path}
 							/>
 						</a>
 					</Link>
 				))}
-			</div> */}
+			</div>
 		</>
 	)
 }
