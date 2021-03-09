@@ -5,8 +5,8 @@ import Head from 'next/head'
 // Package Imports
 import { ThemeProvider } from 'next-themes'
 import { DefaultSeo } from 'next-seo'
-// import 'shikwasa/dist/shikwasa.min.css'
-// import 'shikwasa/dist/shikwasa.chapter.min.css'
+import 'shikwasa/dist/shikwasa.min.css'
+import 'shikwasa/dist/shikwasa.chapter.min.css'
 
 // Style Imports
 import '../styles/index.css'

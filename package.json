@@ -51,6 +51,7 @@
 		"styled-components": "^5.2.1",
 		"swr": "^0.3.11",
 		"topojson-client": "^3.1.0",
+		"use-sound": "^2.0.1",
 		"voca": "^1.4.0"
 	},
 	"devDependencies": {

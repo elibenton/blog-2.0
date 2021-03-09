@@ -21,10 +21,6 @@
 	</url>
 
 	<url>
-		<loc>https://elibenton.co/player</loc>
-	</url>
-
-	<url>
 		<loc>https://elibenton.co/privacy</loc>
 	</url>
 
@@ -57,14 +53,6 @@
 	</url>
 
 	<url>
-		<loc>https://elibenton.co/places/[place]</loc>
-	</url>
-
-	<url>
-		<loc>https://elibenton.co/places/index</loc>
-	</url>
-
-	<url>
 		<loc>https://elibenton.co/scroll/[slug]</loc>
 	</url>
 
@@ -74,5 +62,17 @@
 
 	<url>
 		<loc>https://elibenton.co/tags/index</loc>
+	</url>
+
+	<url>
+		<loc>https://elibenton.co/places/[place]</loc>
+	</url>
+
+	<url>
+		<loc>https://elibenton.co/places/index</loc>
+	</url>
+
+	<url>
+		<loc>https://elibenton.co/email/[email]</loc>
 	</url>
 </urlset>
